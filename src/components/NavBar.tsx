@@ -44,8 +44,8 @@ const NavBar = () => {
           </a>
         ))}
       </div>
-      <div className="fixed bottom-0 w-full  md:hidden flex justify-center ">
-        <div className=" flex items-center  gap-4 mb-2 w-full justify-around py-2 ">
+      <div className="fixed bottom-0 w-full  md:hidden flex justify-center bg-black/80 text-white py-2 rounded-md font-bebas text-lg z-10">
+        <div className=" flex items-center  gap-4 mb-2 w-full justify-evenly py-2 ">
           {links.map((link: Link, idx) => (
             <a
               className="text-white text-xl flex flex-col items-center"
