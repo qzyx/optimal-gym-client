@@ -1,5 +1,6 @@
 import React from "react";
-import JoinButton from "./UI/JoinButton";
+import JoinButton from "./UI/Button";
+import Button from "./UI/Button";
 
 const JoinSection = () => {
   return (
@@ -15,7 +16,7 @@ const JoinSection = () => {
       </span>
       <span className="flex flex-col gap-1 items-center">
         <span className="text-2xl">READY TO ASCEND?</span>
-        <JoinButton  size="lg"/>
+        <Button size="lg" />
       </span>
     </section>
   );
