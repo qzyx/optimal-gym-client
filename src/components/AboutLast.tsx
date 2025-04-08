@@ -1,11 +1,10 @@
 import Image from "next/image";
+import EuquipmentHeading from "./EquipmentHeading";
 
 const AboutLast = () => {
   return (
-    <div className="self-center md:self-start flex flex-col items-center gap-8 md:flex-1">
-      <span className="tracking-widest text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-pink-600">
-        EQUIPMENT
-      </span>
+    <div className="self-center md:self-start w-full flex flex-col items-center gap-8 md:flex-1">
+      <EuquipmentHeading />
       <div className="flex flex-col md:flex-row md:justify-evenly gap-15 w-full">
         <span className="flex  flex-col items-center  md:block gap-2">
           <Image
@@ -31,10 +30,15 @@ const AboutLast = () => {
       <div className="text-center ">
         <span className="">
           &quot;Built for those who demand the best. Our gym is fully stocked
+          <br />
           with Hammer Strength and Panatta equipment—machines designed for pure
+          <br />
           strength, precision, and performance. Whether you&apos;re pushing
+          <br />
           heavy on plate-loaded presses or chasing the perfect contraction on
+          <br />
           Panatta isolaterals, we&apos;ve got the tools to fuel your progress.
+          <br />
           No compromises, just results.&quot;
         </span>
       </div>

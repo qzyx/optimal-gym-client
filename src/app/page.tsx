@@ -4,7 +4,7 @@ import PricingSection from "@/components/PricingSection";
 
 const page = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <HeroSection />
       <PricingSection />
       <AboutSection />

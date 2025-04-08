@@ -2,7 +2,7 @@ import React from "react";
 
 const Heading = () => {
   return (
-    <div className="flex flex-col justify-start   text-white mt-40 select-none">
+    <div className="flex flex-col justify-start   text-white mt-[15vh] select-none">
       <span
         style={{
           textShadow: "5px 5px 5px black",
