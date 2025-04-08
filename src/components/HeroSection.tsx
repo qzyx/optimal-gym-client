@@ -3,6 +3,7 @@ import HeroImage from "./HeroImage";
 import Heading from "./Heading";
 import JoinSection from "./JoinSection";
 import HeroFooter from "./HeroFooter";
+import BouncingArrow from "./UI/BouncingArrow";
 
 const HeroSection = () => {
   return (
@@ -10,8 +11,8 @@ const HeroSection = () => {
       <HeroImage />
       <Heading />
       <JoinSection />
-      <HeroFooter/>
-      
+      <HeroFooter />
+      <BouncingArrow />
     </div>
   );
 };

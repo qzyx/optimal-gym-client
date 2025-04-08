@@ -3,7 +3,7 @@ import React from "react";
 
 const HeroFooter = () => {
   return (
-    <div className="absolute bottom-0 w-full text-gray-300 md:text-lg lg:text-xl flex justify-between items-end py-8 px-2 md:px-5 ">
+    <div className="absolute bottom-18 md:bottom-5 w-full text-gray-300 md:text-lg lg:text-xl flex justify-between items-end py-8 px-2 md:px-5 ">
       <span className="flex flex-col items-start">
         <span className="flex">
           <span className="text-green-500 mr-1">
