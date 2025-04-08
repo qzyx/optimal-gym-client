@@ -1,5 +1,3 @@
-import React from "react";
-import JoinButton from "./UI/Button";
 import Button from "./UI/Button";
 
 const JoinSection = () => {
