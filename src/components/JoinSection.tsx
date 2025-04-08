@@ -8,7 +8,8 @@ const JoinSection = () => {
           JOIN US. BECOME AESTHETIC. BECOME A GOD.
         </span>
         <span className="text-center text-gray-300">
-          It’s not about being better than others, it’s about being <br></br>
+          It&apos;s not about being better than others, it’s about being{" "}
+          <br></br>
           better than you were yesterday.
         </span>
       </span>

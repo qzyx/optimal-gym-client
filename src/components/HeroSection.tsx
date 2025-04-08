@@ -6,7 +6,10 @@ import BouncingArrow from "./UI/BouncingArrow";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen gap-10 flex flex-col items-center  ">
+    <section
+      id="home"
+      className="relative min-h-screen gap-10 flex flex-col items-center select-none  "
+    >
       <HeroImage />
       <Heading />
       <JoinSection />

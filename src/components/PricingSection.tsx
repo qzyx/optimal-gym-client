@@ -51,8 +51,11 @@ const pricingPlans: PricingPlanProps[] = [
 ];
 const PricingSection = () => {
   return (
-    <section className="relative min-h-screen ">
-      <main className="text-white flex w-full my-10 flex-col  gap-5 md:px-10   ">
+    <section id="pricing" className="relative min-h-screen ">
+      <main className="text-white flex w-full py-10 flex-col  gap-5 md:px-10   ">
+        <span className="self-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-pink-600">
+          Pricing
+        </span>
         <div className="flex w-full gap-5 flex-wrap  justify-around ">
           {pricingPlans.map((plan, idx) => (
             <PricingCard key={idx} plan={plan} />
