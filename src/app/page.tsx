@@ -1,11 +1,12 @@
+import AboutSection from "@/components/AboutSection";
 import HeroSection from "@/components/HeroSection";
 
 const page = () => {
   return (
     <div>
 
-      <HeroSection />
-      <div className="min-h-screen bg-black"></div>
+      <HeroSection/>
+      <AboutSection/>
     </div>
   );
 };
