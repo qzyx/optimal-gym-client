@@ -1,6 +1,6 @@
 import React from "react";
-import GetInTouch from "./GetInTouch";
-import SendUsAMessage from "./SendUsAMessage";
+import GetInTouch from "../GetInTouch";
+import SendUsAMessage from "../SendUsAMessage";
 
 const ContactSection = () => {
   return (

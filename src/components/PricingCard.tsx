@@ -1,17 +1,30 @@
+"use client";
+
 import React from "react";
 import Button from "./UI/Button";
+import { motion } from "framer-motion";
 import { Ticket } from "lucide-react";
 type Plan = {
   name: string;
   price: string;
+  position: string;
   benefits: string[];
   isPopular?: boolean;
 };
 const PricingCard = ({ plan }: { plan: Plan }) => {
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 0,
+        x:
+          plan.position === "left" ? -100 : plan.position === "right" ? 100 : 0,
+      }}
+      whileInView={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
+      whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
+      transition={{ ease: "easeInOut" }}
+      viewport={{ once: true,amount: 0.2 }}
       className={`${
-        plan.isPopular ? "border-2 border-yellow-500" : ""
+        plan.isPopular ? "border-2 border-yellow-500 " : ""
       } p-5 pb-20 flex flex-col  items-center relative  rounded-md w-100 bg-gradient-to-b from-black border border-gray-600 to-pink-800`}
     >
       {plan.isPopular && (
@@ -33,7 +46,7 @@ const PricingCard = ({ plan }: { plan: Plan }) => {
       <div className="absolute bottom-5">
         <Button size="md" text="BUY NOW" icon={Ticket} />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

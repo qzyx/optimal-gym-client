@@ -1,8 +1,8 @@
-import Heading from "./HeroHeading";
-import HeroFooter from "./HeroFooter";
-import HeroImage from "./HeroImage";
-import JoinSection from "./JoinSection";
-import BouncingArrow from "./UI/BouncingArrow";
+import Heading from "../HeroHeading";
+import HeroFooter from "../HeroFooter";
+import HeroImage from "../HeroImage";
+import JoinSection from "../JoinSection";
+import BouncingArrow from "../UI/BouncingArrow";
 
 const HeroSection = () => {
   return (

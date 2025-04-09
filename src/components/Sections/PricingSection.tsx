@@ -1,9 +1,10 @@
 import React from "react";
-import PricingCard from "./PricingCard";
-import PricingHeading from "./PricingHeading";
+import PricingCard from "../PricingCard";
+import PricingHeading from "../PricingHeading";
 interface PricingPlanProps {
   name: string;
   price: string;
+  position: string;
   benefits: string[];
   isPopular?: boolean;
 }
@@ -12,6 +13,7 @@ const pricingPlans: PricingPlanProps[] = [
   {
     name: "Single Entry (Pay as you go)",
     price: "10$",
+    position: "left",
     benefits: [
       "✓ Access to main gym area",
       "✓ Standard equipment usage",
@@ -23,6 +25,7 @@ const pricingPlans: PricingPlanProps[] = [
   {
     name: "Montly membership",
     price: "55$",
+    position: "middle",
     benefits: [
       "★ Full gym access 24/7",
       "★ All equipment usage",
@@ -37,6 +40,7 @@ const pricingPlans: PricingPlanProps[] = [
   {
     name: "Yearly membership",
     price: "405$",
+    position: "right",
     benefits: [
       "⭐ VIP gym access 24/7",
       "⭐ Premium equipment priority",
@@ -52,7 +56,7 @@ const pricingPlans: PricingPlanProps[] = [
 ];
 const PricingSection = () => {
   return (
-    <section id="pricing" className="relative min-h-screen ">
+    <section id="pricing" className="relative  ">
       <main className="text-white flex w-full flex-col  gap-5 md:px-10   ">
         <PricingHeading />
         <div className="flex w-full gap-5 flex-wrap  justify-around  ">
@@ -63,9 +67,12 @@ const PricingSection = () => {
         <span className="self-center text-center flex flex-col">
           <span className="text-4xl">Affordable Pricing, Maximum Results</span>
           <span className="text-lg text-gray-300">
-            At Optimal Gym, we believe fitness should be accessible to everyone.<br/>
-            Whether you&apos;re just getting started or you&apos;re a seasoned pro, we&apos;ve
-            got a membership plan that fits your needs. Choose the one that<br/>
+            At Optimal Gym, we believe fitness should be accessible to everyone.
+            <br />
+            Whether you&apos;re just getting started or you&apos;re a seasoned
+            pro, we&apos;ve got a membership plan that fits your needs. Choose
+            the one that
+            <br />
             works best for you and start your journey towards greatness today.
           </span>
         </span>

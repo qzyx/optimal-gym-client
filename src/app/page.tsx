@@ -1,7 +1,7 @@
-import AboutSection from "@/components/AboutSection";
-import ContactSection from "@/components/ContactSection";
-import HeroSection from "@/components/HeroSection";
-import PricingSection from "@/components/PricingSection";
+import AboutSection from "@/components/Sections/AboutSection";
+import ContactSection from "@/components/Sections/ContactSection";
+import HeroSection from "@/components/Sections/HeroSection";
+import PricingSection from "@/components/Sections/PricingSection";
 
 const page = () => {
   return (

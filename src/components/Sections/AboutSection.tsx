@@ -1,5 +1,5 @@
-import AboutFirst from "./AboutFirst";
-import AboutLast from "./AboutLast";
+import AboutFirst from "../AboutFirst";
+import AboutLast from "../AboutLast";
 
 const AboutSection = () => {
   return (

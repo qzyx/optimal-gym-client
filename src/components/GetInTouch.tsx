@@ -32,7 +32,7 @@ const info: Info[] = [
 ];
 const GetInTouch = () => {
   return (
-    <div className="flex flex-col pb-10  p-4 rounded-md bg-gradient-to-b flex-1 border border-gray-300 from-pink-600  to-black ">
+    <div className="flex flex-col pb-10  p-4 rounded-md bg-gradient-to-b from-black border border-gray-600 to-pink-800 flex-1  ">
       <span className="text-2xl self-center ">GET IN TOUCH</span>
       <div className="flex flex-col text-md justify-start gap-10 h-full">
         {info.map((infoItem, idx) => (
