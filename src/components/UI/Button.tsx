@@ -5,7 +5,7 @@ const Button = ({
   text = "JOIN NOW",
   icon: Icon = ArrowRight,
 }: {
-  size: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg";
   text?: string;
   icon?: LucideIcon;
 }) => {
