@@ -1,4 +1,4 @@
-import Heading from "./Heading";
+import Heading from "./HeroHeading";
 import HeroFooter from "./HeroFooter";
 import HeroImage from "./HeroImage";
 import JoinSection from "./JoinSection";

@@ -32,6 +32,22 @@ const links = [
   },
 ];
 
+/**
+ * NavBar Component
+ *
+ * A responsive navigation component with two different layouts:
+ * - Desktop: A fixed navbar at the top of the page with text links
+ * - Mobile: A fixed navbar at the bottom of the page with icon and text links
+ *
+ * Features:
+ * - Intersection Observer API to highlight the active section
+ * - Smooth transitions and hover effects
+ * - Responsive design that changes layout based on screen size
+ * - Custom underline animations for active and hovered links
+ *
+ * The mobile version displays at the bottom of the screen with icons and text,
+ * while the desktop version displays at the top with text-only links.
+ */
 const NavBar = () => {
   const [activeSection, setActiveSection] = useState(null);
 
@@ -76,15 +92,20 @@ const NavBar = () => {
           </a>
         ))}
       </nav>
-      <nav className="fixed bottom-0 w-full  md:hidden flex justify-center bg-black/80 text-white py-2 rounded-md font-bebas text-lg z-10">
-        <div className=" flex items-center  gap-4 mb-2 w-full justify-evenly py-2 ">
+
+      <nav className="fixed bottom-0 w-full  md:hidden flex justify-center bg-black/50 text-white p-1  font-bebas text-lg z-10">
+        <div className=" flex items-center  gap-4  w-full justify-evenly p-1 ">
           {links.map((link: Link, idx) => (
             <a
               href={`#${link.url}`}
-              className="text-white text-xl flex flex-col items-center cursor-pointer"
+              className={`text-white text-xl flex flex-col items-center cursor-pointer flex-1 py-1 transition-all duration-300 ${
+              activeSection === link.url
+                ? "bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 rounded-full shadow-lg shadow-blue-500/30 scale-105"
+                : "hover:bg-black/30 hover:rounded-full"
+              }`}
               key={link.name || idx}
             >
-              <span>{link.icon}</span>
+              <span className={activeSection === link.url ? "text-white animate-pulse" : ""}>{link.icon}</span>
               <span>{link.name}</span>
             </a>
           ))}

@@ -4,7 +4,7 @@ const JoinSection = () => {
   return (
     <section className="px-10 py-5 text-white rounded-md items-center flex flex-col gap-4 bg-black/60">
       <span className="flex flex-col ">
-        <span className="text-2xl ">
+        <span className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-pink-600 ">
           JOIN US. BECOME AESTHETIC. BECOME A GOD.
         </span>
         <span className="text-center text-gray-300">

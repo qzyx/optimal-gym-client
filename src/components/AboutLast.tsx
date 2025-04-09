@@ -28,7 +28,7 @@ const AboutLast = () => {
         </span>
       </div>
       <div className="text-center ">
-        <span className="">
+        <span className="bg-gradient-to-r from-white/50 via-white/70 to-white/40 bg-clip-text text-transparent backdrop-blur-md">
           &quot;Built for those who demand the best. Our gym is fully stocked
           <br />
           with Hammer Strength and Panatta equipment—machines designed for pure
