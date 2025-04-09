@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 type Info = {
   icon: React.ReactNode;
@@ -12,17 +12,17 @@ const info: Info[] = [
     infos: ["Optimal gym", "123 Iron Avenue", "Fitness City, FTM 4594"],
   },
   {
-    icon: <MapPin></MapPin>,
+    icon: <Phone></Phone>,
     name: "CALL US",
     infos: ["+1 234 567 890", "+1 234 567 891"],
   },
   {
-    icon: <MapPin></MapPin>,
+    icon: <Mail></Mail>,
     name: "EMAIL US",
     infos: ["info@optymalgym.com", "support@optymalgym.com"],
   },
   {
-    icon: <MapPin></MapPin>,
+    icon: <Clock></Clock>,
     name: "Working hours",
     infos: [
       "Monday - Friday : NONSTOP",
