@@ -22,7 +22,7 @@ const PricingCard = ({ plan }: { plan: Plan }) => {
       whileInView={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
       whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
       transition={{ ease: "easeInOut" }}
-      viewport={{ once: true,amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       className={`${
         plan.isPopular ? "border-2 border-yellow-500 " : ""
       } p-5 pb-20 flex flex-col  items-center relative  rounded-md w-100 bg-gradient-to-b from-black border border-gray-600 to-pink-800`}
