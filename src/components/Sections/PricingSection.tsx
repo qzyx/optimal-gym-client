@@ -1,6 +1,7 @@
 import React from "react";
 import PricingCard from "../PricingCard";
 import PricingHeading from "../PricingHeading";
+import PricingSubText from "../PricingSubText";
 interface PricingPlanProps {
   name: string;
   price: string;
@@ -59,23 +60,12 @@ const PricingSection = () => {
     <section id="pricing" className="relative  ">
       <main className="text-white flex w-full flex-col  gap-5 md:px-10   ">
         <PricingHeading />
-        <div className="flex w-full gap-5 flex-wrap  justify-around  ">
+        <div className="flex w-full gap-5 flex-wrap  justify-around overflow-hidden py-10 ">
           {pricingPlans.map((plan, idx) => (
             <PricingCard key={idx} plan={plan} />
           ))}
         </div>
-        <span className="self-center text-center flex flex-col">
-          <span className="text-4xl">Affordable Pricing, Maximum Results</span>
-          <span className="text-lg text-gray-300">
-            At Optimal Gym, we believe fitness should be accessible to everyone.
-            <br />
-            Whether you&apos;re just getting started or you&apos;re a seasoned
-            pro, we&apos;ve got a membership plan that fits your needs. Choose
-            the one that
-            <br />
-            works best for you and start your journey towards greatness today.
-          </span>
-        </span>
+        <PricingSubText />
       </main>
     </section>
   );

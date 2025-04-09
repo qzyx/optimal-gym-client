@@ -9,6 +9,8 @@ const FadeIn = ({
   delayTime = 0,
   x = 0,
   y = 0,
+  classname,
+  amount = 0.2,
 }: {
   children: React.ReactNode;
   inView?: boolean;
@@ -16,6 +18,8 @@ const FadeIn = ({
   delayTime?: number;
   x?: number;
   y?: number;
+  classname?: string;
+  amount?: number;
 }) => {
   return (
     <motion.div
@@ -23,8 +27,8 @@ const FadeIn = ({
       whileInView={inView ? { opacity: 1, x: 0, y: 0 } : undefined}
       animate={!inView ? { opacity: 1, x: 0, y: 0 } : undefined}
       transition={{ duration: duration, ease: "easeInOut", delay: delayTime }}
-      viewport={{ once: true, amount: 0.2 }}
-      className=""
+      viewport={{ once: true, amount: amount }}
+      className={classname || ""}
     >
       {children}
     </motion.div>

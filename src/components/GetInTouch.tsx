@@ -1,5 +1,6 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
+import FadeIn from "./Animations/FadeIn";
 type Info = {
   icon: React.ReactNode;
   name: string;
@@ -32,7 +33,13 @@ const info: Info[] = [
 ];
 const GetInTouch = () => {
   return (
-    <div className="flex flex-col pb-10  p-4 rounded-md bg-gradient-to-b from-black border border-gray-600 to-pink-800 flex-1  ">
+    <FadeIn
+      inView={true}
+      x={-50}
+      classname={
+        "flex flex-col pb-10  p-4 rounded-md bg-gradient-to-b from-black border border-gray-600 to-pink-800 flex-1  "
+      }
+    >
       <span className="text-2xl self-center ">GET IN TOUCH</span>
       <div className="flex flex-col text-md justify-start gap-10 h-full">
         {info.map((infoItem, idx) => (
@@ -49,7 +56,7 @@ const GetInTouch = () => {
           </div>
         ))}
       </div>
-    </div>
+    </FadeIn>
   );
 };
 
