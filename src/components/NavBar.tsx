@@ -101,7 +101,7 @@ const NavBar = () => {
         <div className=" flex items-center  gap-4  w-full justify-evenly p-1 ">
           {links.map((link: LinkType, idx) => (
             <a
-              href={`#${link.url}`}
+              href={`/#${link.url}`}
               className={`text-white text-xl flex flex-col items-center cursor-pointer flex-1 py-1 transition-all duration-300 ${
                 activeSection === link.url
                   ? "bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 rounded-full shadow-lg shadow-blue-500/30 scale-105"
