@@ -72,7 +72,10 @@ const NavBar = () => {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      setActiveSection(null);
+    };
   }, []);
 
   return (
@@ -80,7 +83,7 @@ const NavBar = () => {
       <nav className="hidden md:flex top-10 sm:top-5 left-[50%] z-10 text-base -translate-x-[50%] fixed px-5 items-center justify-center gap-5 md:text-lg text-white py-3 rounded-md font-bebas bg-black/80 mx-auto">
         {links.map((link: Link, idx) => (
           <a
-            href={`#${link.url}`}
+            href={`/#${link.url}`}
             className={`cursor-pointer select-none relative hover:tracking-wider hover:text-gray-300 transition-all duration-200 ease-in-out ${
               activeSection === link.url
                 ? "after:content-[''] after:h-[2px]  after:absolute after:bottom-0 after:left-[50%] after:bg-white after:transition-all after:duration-300 after:ease-in-out after:translate-x-[-50%] after:w-full"
@@ -99,13 +102,19 @@ const NavBar = () => {
             <a
               href={`#${link.url}`}
               className={`text-white text-xl flex flex-col items-center cursor-pointer flex-1 py-1 transition-all duration-300 ${
-              activeSection === link.url
-                ? "bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 rounded-full shadow-lg shadow-blue-500/30 scale-105"
-                : "hover:bg-black/30 hover:rounded-full"
+                activeSection === link.url
+                  ? "bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 rounded-full shadow-lg shadow-blue-500/30 scale-105"
+                  : "hover:bg-black/30 hover:rounded-full"
               }`}
               key={link.name || idx}
             >
-              <span className={activeSection === link.url ? "text-white animate-pulse" : ""}>{link.icon}</span>
+              <span
+                className={
+                  activeSection === link.url ? "text-white animate-pulse" : ""
+                }
+              >
+                {link.icon}
+              </span>
               <span>{link.name}</span>
             </a>
           ))}
