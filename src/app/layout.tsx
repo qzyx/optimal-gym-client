@@ -35,7 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-black pb-20 antialiased min-h-[100dvh] font-bebas `}
+        className={`${geistSans.variable} ${geistMono.variable} bg-black pb-50 antialiased min-h-[100dvh] font-bebas `}
       >
         <Header />
         <NavBar />
