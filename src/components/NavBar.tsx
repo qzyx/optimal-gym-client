@@ -97,26 +97,20 @@ const NavBar = () => {
         ))}
       </nav>
 
-      <nav className="fixed bottom-0 w-full  md:hidden flex justify-center bg-black/50 text-white p-1  font-bebas text-lg z-10">
+      <nav className="fixed bottom-0 w-full  md:hidden flex justify-center  text-white px-1  font-bebas text-lg z-10">
         <div className=" flex items-center  gap-4  w-full justify-evenly p-1 ">
           {links.map((link: LinkType, idx) => (
             <a
               href={`/#${link.url}`}
               className={`text-white text-xl flex flex-col items-center cursor-pointer flex-1 py-1 transition-all duration-300 ${
                 activeSection === link.url
-                  ? "bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 rounded-full shadow-lg shadow-blue-500/30 scale-105"
+                  ? " rounded-full shadow-lg  scale-105 animate-pulse"
                   : "hover:bg-black/30 hover:rounded-full"
               }`}
               key={link.name || idx}
             >
-              <span
-                className={
-                  activeSection === link.url ? "text-white animate-pulse" : ""
-                }
-              >
-                {link.icon}
-              </span>
-              <span>{link.name}</span>
+              <span>{link.icon}</span>
+              <span className="text-sm">{link.name}</span>
             </a>
           ))}
         </div>
