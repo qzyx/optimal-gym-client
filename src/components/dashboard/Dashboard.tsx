@@ -1,5 +1,7 @@
+import { ArrowLeftToLine, MoveLeft } from "lucide-react";
 import TimeElapsedChart from "../charts/TimeElapsedChart";
 import UserSection from "./UserSection";
+import Link from "next/link";
 type workout = {
   time: number;
   date: string;
@@ -43,11 +45,17 @@ export const user: User = {
 
 const DashBoard = () => {
   return (
-    <div className="py-4 px-4 lg:px-0 flex flex-col gap-10 lg:gap-0 lg:flex-row  w-[90%] my-[5vh] bg-white rounded-md">
+    <div className="p-2  flex flex-col gap-10 lg:gap-0 lg:flex-row  lg:w-[95%] lg:my-[5vh] text-black  bg-slate-300/80 lg:rounded-md shadow-2xl">
+      <Link
+        href={"/"}
+        className="absolute  lg:hidden top-3 left-3 sm:left-5 sm:top-5 shadow-xl px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium  rounded-md transition-colors duration-300 "
+      >
+        Back to Home
+      </Link>
       <div className="lg:w-1/4">
         <UserSection user={user} />
       </div>
-      <div className="flex flex-col lg:w-3/8 px-4 gap-5">
+      <div className="flex flex-col lg:w-3/8 gap-5">
         <div className="h-1/2">
           <TimeElapsedChart user={user} />
         </div>
