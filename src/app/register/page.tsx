@@ -1,6 +1,6 @@
 "use client";
 
-import AuthLayout from "@/components/layout/AuthLayout";
+import AuthLayout from "@/components/Layout/AuthLayout";
 import RegisterForm from "@/components/RegisterForm";
 import RegisterHeading from "@/components/RegisterHeading";
 

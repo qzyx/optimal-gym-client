@@ -1,6 +1,6 @@
 "use client";
 
-import AuthLayout from "@/components/layout/AuthLayout";
+import AuthLayout from "@/components/Layout/AuthLayout";
 import LoginForm from "@/components/LoginForm";
 import LoginHeading from "@/components/LoginHeading";
 import Image from "next/image";
