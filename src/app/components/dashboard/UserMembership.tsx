@@ -1,5 +1,5 @@
 import { getDaysBetweenDates } from "@/lib/time";
-import { Star } from "lucide-react";
+import { Crown, Star } from "lucide-react";
 import { pricingPlans } from "../../../../public/pricingPlans";
 import { User } from "./Main/Dashboard";
 import UserRechargeButton from "./UsertRechargeButton";
@@ -9,14 +9,30 @@ const UserMembership = ({ user }: { user: User }) => {
     <div id="memberShip" className="flex flex-col w-full gap-5">
       <div className="flex flex-col w-full gap-1">
         <span className="text-xl">Membership</span>
-        <span
-          className={`${
-            user.membership.name === "Yearly"
-              ? "text-yellow-500 "
-              : " text-black "
-          } text-xl  self-center`}
-        >
-          {user.membership.name}
+        <span className="text-xl  self-center flex flex-col items-center text-center">
+          {user.membership.id === "month" ? (
+            <span>
+              <Crown color="silver"></Crown>
+            </span>
+          ) : (
+            ""
+          )}
+          {user.membership.id === "year" ? (
+            <span>
+              <Crown color="gold"></Crown>
+            </span>
+          ) : (
+            ""
+          )}
+          <span
+            className={`${
+              user.membership.id === "year" && "text-yellow-300 "
+            } ${user.membership.id === "month" && "text-gray-300 "} ${
+              user.membership.id === "single" && "text-yellow-300 "
+            } `}
+          >
+            {user.membership.name}
+          </span>
         </span>
       </div>
       <div className="w-full gap-2 flex flex-col ">

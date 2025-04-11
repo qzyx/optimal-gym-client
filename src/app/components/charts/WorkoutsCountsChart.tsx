@@ -58,7 +58,8 @@ export default function WorkoutsCountsChart({
     ],
   };
   const options = {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    /* eslint-disable */
+    // @ts-ignore
     onClick: (e: any) => {
       const elements = e.chart.getElementsAtEventForMode(
         e.native,

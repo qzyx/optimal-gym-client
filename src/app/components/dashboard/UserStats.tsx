@@ -12,7 +12,7 @@ const UserStats = ({ user }: { user: User }) => {
           height={80}
           width={80}
           alt="user"
-          className="p-2 rounded-full text-xl"
+          className="p-2 rounded-full bg-white text-xl"
         ></Image>
         <span className="text-xl">{user.name}</span>
       </div>

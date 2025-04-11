@@ -33,7 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900  antialiased min-h-[100dvh] font-bebas `}
+        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 lg:overflow-hidden antialiased min-h-[100dvh] font-bebas `}
       >
         {children}
       </body>
