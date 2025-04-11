@@ -12,7 +12,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { User } from "../dashboard/Main/Dashboard";
+import { User } from "../Main/Dashboard";
 
 ChartJS.register(
   CategoryScale,

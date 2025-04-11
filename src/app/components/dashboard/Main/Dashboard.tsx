@@ -53,15 +53,15 @@ export const user: User = {
     { time: 1832, date: "2024-01-03" },
     { time: 925, date: "2024-01-04" },
     { time: 678, date: "2024-01-05" },
-    { time: 925, date: "2024-01-04" },
+    { time: 678, date: "2024-01-05" },
     { time: 678, date: "2024-01-05" },
     { time: 925, date: "2024-01-04" },
-    { time: 678, date: "2024-01-05" },
+    { time: 925, date: "2024-01-04" },
+    { time: 925, date: "2024-01-04" },
+    { time: 925, date: "2024-01-04" },
     { time: 925, date: "2024-01-04" },
     { time: 678, date: "2024-01-05" },
-    { time: 925, date: "2024-01-04" },
     { time: 678, date: "2024-01-05" },
-    { time: 925, date: "2024-01-04" },
     { time: 678, date: "2024-01-05" },
     { time: 1678, date: "2024-01-05" },
   ],
@@ -222,9 +222,7 @@ export const user: User = {
 const DashBoard = () => {
   return (
     <div className="py-4 px-4 flex flex-col   gap-10 overflow-hidden lg:gap-0 lg:flex-row lg:w-[90%] lg:my-[5vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
-      <div className="lg:w-1/4">
-        <UserSection user={user} />
-      </div>
+      <UserSection user={user} />
       <FirstDashboardPart user={user} />
       <SecondDashboardPart user={user} />
     </div>

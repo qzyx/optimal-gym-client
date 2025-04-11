@@ -1,7 +1,7 @@
 import React from "react";
 import { User } from "./Main/Dashboard";
 
-const WorkoutHistory = ({ user }: { user: User }) => {
+const WorkoutHistorySection = ({ user }: { user: User }) => {
   return (
     <div className="flex-1 w-full p-2 gap-4 flex overflow-hidden  flex-col">
       <span className="text-xl self-center">Workout History</span>
@@ -20,4 +20,4 @@ const WorkoutHistory = ({ user }: { user: User }) => {
   );
 };
 
-export default WorkoutHistory;
+export default WorkoutHistorySection;

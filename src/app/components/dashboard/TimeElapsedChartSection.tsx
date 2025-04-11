@@ -1,5 +1,5 @@
 import React from "react";
-import TimeElapsedChart from "../charts/TimeElapsedChart";
+import TimeElapsedChart from "./charts/TimeElapsedChart";
 import { User } from "./Main/Dashboard";
 
 const TimeElapsedChartSection = ({ user }: { user: User }) => {

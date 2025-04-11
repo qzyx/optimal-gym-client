@@ -1,13 +1,12 @@
-import React from "react";
 import TimeElapsedChartSection from "../TimeElapsedChartSection";
-import WorkoutHistory from "../WorkoutHistory";
+import WorkoutHistorySection from "../WorkoutHistorySection";
 import { User } from "./Dashboard";
 
 const FirstDashboardPart = ({ user }: { user: User }) => {
   return (
     <div className="lg:w-3/8 lg:px-4 w-full gap-5 flex flex-col justify-between">
       <TimeElapsedChartSection user={user} />
-      <WorkoutHistory user={user} />
+      <WorkoutHistorySection user={user} />
     </div>
   );
 };

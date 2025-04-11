@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SelectedMonth from "../SelectedMonth";
+import SelectedMonthSection from "../SelectedMonthSection";
 import WorkoutsCountsChartSection from "../WorkoutsCountsChartSection";
 import { User } from "./Dashboard";
 
@@ -11,7 +11,7 @@ const SecondDashboardPart = ({ user }: { user: User }) => {
   return (
     <div className="lg:w-3/8 lg:px-4 w-full gap-5 flex flex-col justify-between">
       <WorkoutsCountsChartSection user={user} setOpenedMonth={setOpenedMonth} />
-      <SelectedMonth user={user} openedMonth={openedMonth} />
+      <SelectedMonthSection user={user} openedMonth={openedMonth} />
     </div>
   );
 };

@@ -10,7 +10,8 @@ import {
   Tooltip,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { User } from "../dashboard/Main/Dashboard";
+import { User } from "../Main/Dashboard";
+import { monthNames } from "../../../../../public/monthNames";
 
 ChartJS.register(
   BarElement,
@@ -28,21 +29,6 @@ export default function WorkoutsCountsChart({
   user: User;
   onClick: (month: string) => void;
 }) {
-  const monthNames: Record<string, string> = {
-    JAN: "January",
-    FEB: "February",
-    MAR: "March",
-    APR: "April",
-    MAY: "May",
-    JUN: "June",
-    JUL: "July",
-    AUG: "August",
-    SEP: "September",
-    OCT: "October",
-    NOV: "November",
-    DEC: "December",
-  };
-
   const labels = user.wourkoutCount.map((workout) => workout.month); // Extract date
   const dataValues = user.wourkoutCount.map((workout) => workout.count); // Convert time to hours
   const data = {

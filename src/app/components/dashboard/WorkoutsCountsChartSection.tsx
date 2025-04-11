@@ -1,4 +1,4 @@
-import WorkoutsCountsChart from "../charts/WorkoutsCountsChart";
+import WorkoutsCountsChart from "./charts/WorkoutsCountsChart";
 import { User } from "./Main/Dashboard";
 
 const WorkoutsCountsChartSection = ({

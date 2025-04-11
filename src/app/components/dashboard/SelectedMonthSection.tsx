@@ -4,7 +4,7 @@ import React from "react";
 import { User } from "./Main/Dashboard";
 import { formatTime } from "@/lib/time";
 import { AnimatePresence, motion } from "framer-motion";
-const SelectedMonth = ({
+const SelectedMonthSection = ({
   openedMonth,
   user,
 }: {
@@ -113,4 +113,4 @@ const SelectedMonth = ({
   );
 };
 
-export default SelectedMonth;
+export default SelectedMonthSection;
