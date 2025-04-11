@@ -14,6 +14,7 @@ import {
 } from "chart.js";
 import { Bar, Line } from "react-chartjs-2";
 import { User } from "../dashboard/Dashboard";
+import { tr } from "framer-motion/client";
 
 ChartJS.register(
   BarElement,

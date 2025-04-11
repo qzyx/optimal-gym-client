@@ -76,11 +76,11 @@ const DashBoard = () => {
       <div className="lg:w-1/4">
         <UserSection user={user} />
       </div>
-      <div className="flex flex-col lg:w-3/8 px-4 gap-5">
+      <div className="flex flex-col lg:w-3/8 lg:px-4 gap-5">
         <TimeElapsedChartSection user={user} />
         <WorkoutHistory user={user} />
       </div>
-      <div className="lg:w-3/8 px-4 w-full">
+      <div className="lg:w-3/8 lg:px-4 w-full gap-5">
         <WorkoutsCountsChartSection user={user} />
         <div className="h-1/2"></div>
       </div>
