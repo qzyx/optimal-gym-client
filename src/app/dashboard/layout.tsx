@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-import NavBar from "@/components/NavBar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
@@ -35,7 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden bg-gradient-to-br from-slate-900 to-fuchsia-800/50 text-white  antialiased min-h-[100dvh] font-bebas `}
+        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900  antialiased min-h-[100dvh] font-bebas `}
       >
         {children}
       </body>

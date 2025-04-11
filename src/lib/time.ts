@@ -8,7 +8,11 @@ export const formatTime = (timeInSeconds: number): string => {
   if (days > 0) {
     return `${days}d ${remainingHours}h ${minutes}m`;
   } else {
-    return `${hours}h ${minutes}m ${seconds}s`;
+    if (hours > 0) {
+      return `${hours}h ${minutes}m ${Math.floor(seconds)}s`;
+    } else {
+      return `${minutes}m ${Math.floor(seconds)}s`;
+    }
   }
 };
 export const getDaysBetweenDates = (endDate: string): number => {
