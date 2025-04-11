@@ -1,5 +1,7 @@
-import TimeElapsedChart from "../charts/TimeElapsedChart";
+import TimeElapsedChartSection from "./TimeElapsedChartSection";
 import UserSection from "./UserSection";
+import WorkoutHistory from "./WorkoutHistory";
+import WorkoutsCountsChartSection from "./WorkoutsCountsChartSection";
 type workout = {
   time: number;
   date: string;
@@ -13,7 +15,10 @@ export type User = {
   membershipDateStarted: string;
   membershipDateEnding: string;
   workouts: workout[];
-
+  wourkoutCount: {
+    month: string;
+    count: number;
+  }[];
   membership: {
     name: string;
     id: string;
@@ -26,6 +31,20 @@ export const user: User = {
   lastPayment: "2024-01-01",
   membershipDateStarted: "2025-01-01",
   membershipDateEnding: "2026-01-01",
+  wourkoutCount: [
+    { month: "Jan", count: 15 },
+    { month: "Feb", count: 12 },
+    { month: "Mar", count: 8 },
+    { month: "Apr", count: 10 },
+    { month: "May", count: 5 },
+    { month: "Jun", count: 1 },
+    { month: "Jul", count: 7 },
+    { month: "Aug", count: 20 },
+    { month: "Sep", count: 18 },
+    { month: "Oct", count: 14 },
+    { month: "Nov", count: 9 },
+    { month: "Dec", count: 4 },
+  ],
   workouts: [
     { time: 3600, date: "1.5" },
     { time: 4200, date: "7.5" },
@@ -48,12 +67,13 @@ const DashBoard = () => {
         <UserSection user={user} />
       </div>
       <div className="flex flex-col lg:w-3/8 px-4 gap-5">
-        <div className="h-1/2">
-          <TimeElapsedChart user={user} />
-        </div>
-        <div className="h-1/2 w-full"></div>
+        <TimeElapsedChartSection user={user} />
+        <WorkoutHistory user={user} />
       </div>
-      <div className="lg:w-3/8 px-4 w-full"></div>
+      <div className="lg:w-3/8 px-4 w-full">
+        <WorkoutsCountsChartSection user={user} />
+        <div className="h-1/2"></div>
+      </div>
     </div>
   );
 };
