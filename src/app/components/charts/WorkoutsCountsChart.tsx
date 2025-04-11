@@ -36,7 +36,7 @@ export default function WorkoutsCountsChart({ user }: { user: User }) {
         label: "Workout Time Elapsed",
         data: dataValues,
         borderColor: "rgb(0, 0, 0)",
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
+        backgroundColor: "rgba(0, 255, 0, 0.3)",
         fill: true,
       },
     ],

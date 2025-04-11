@@ -37,8 +37,8 @@ export default function TimeElapsedChart({ user }: { user: User }) {
         label: "Workout Time Elapsed",
         data: dataValues,
         borderColor: "rgb(0, 0, 0)",
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
-        fill: true,
+        backgroundColor: "rgba(255, 0, 0, 1)",
+        
       },
     ],
   };

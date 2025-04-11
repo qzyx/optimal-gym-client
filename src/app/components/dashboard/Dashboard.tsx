@@ -52,6 +52,16 @@ export const user: User = {
     { time: 5400, date: "21.5" },
     { time: 3900, date: "28.5" },
     { time: 4800, date: "4.6" },
+    { time: 4200, date: "7.5" },
+    { time: 2700, date: "14.5" },
+    { time: 5400, date: "21.5" },
+    { time: 3900, date: "28.5" },
+    { time: 4800, date: "4.6" },
+    { time: 4200, date: "7.5" },
+    { time: 2700, date: "14.5" },
+    { time: 5400, date: "21.5" },
+    { time: 3900, date: "28.5" },
+    { time: 4800, date: "4.6" },
   ],
   pfp: null,
   membership: {
@@ -62,7 +72,7 @@ export const user: User = {
 
 const DashBoard = () => {
   return (
-    <div className="py-4 px-4 flex flex-col gap-10 lg:gap-0 lg:flex-row lg:w-[90%] lg:my-[5vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
+    <div className="py-4 px-4 flex flex-col   gap-10 overflow-hidden lg:gap-0 lg:flex-row lg:w-[90%] lg:my-[5vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
       <div className="lg:w-1/4">
         <UserSection user={user} />
       </div>
