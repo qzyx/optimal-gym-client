@@ -1,8 +1,8 @@
 "use client";
 
-import AuthLayout from "@/components/Layout/AuthLayout";
-import LoginForm from "@/components/LoginForm";
-import LoginHeading from "@/components/LoginHeading";
+import AuthLayout from "@/app/components/Layout/AuthLayout";
+import LoginForm from "@/app/components/LoginForm";
+import LoginHeading from "@/app/components/LoginHeading";
 import Image from "next/image";
 
 const page = () => {

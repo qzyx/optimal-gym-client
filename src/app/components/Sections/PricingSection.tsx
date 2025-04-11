@@ -2,7 +2,7 @@ import React from "react";
 import PricingCard from "../PricingCard";
 import PricingHeading from "../PricingHeading";
 import PricingSubText from "../PricingSubText";
-import { pricingPlans } from "../../../public/pricingPlans";
+import { pricingPlans } from "../../../../public/pricingPlans";
 
 const PricingSection = () => {
   return (

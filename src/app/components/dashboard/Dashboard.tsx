@@ -43,7 +43,7 @@ export const user: User = {
 
 const DashBoard = () => {
   return (
-    <div className="py-4 px-4 lg:px-0 flex flex-col gap-10 lg:gap-0 lg:flex-row  w-[90%] my-[5vh] bg-white rounded-md">
+    <div className="py-4 px-4 flex flex-col gap-10 lg:gap-0 lg:flex-row lg:w-[90%] lg:my-[5vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
       <div className="lg:w-1/4">
         <UserSection user={user} />
       </div>

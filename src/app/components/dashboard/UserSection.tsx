@@ -1,7 +1,8 @@
 import { formatTime, getDaysBetweenDates } from "@/lib/time";
 import Image from "next/image";
 import React from "react";
-import { pricingPlans } from "../../../public/pricingPlans";
+import { pricingPlans } from "../../../../public/pricingPlans";
+import { Star } from "lucide-react";
 type User = {
   name: string;
   sessionCount: number;
@@ -17,7 +18,7 @@ type User = {
 };
 const UserSection = ({ user }: { user: User }) => {
   return (
-    <div className="flex flex-col flex-1 lg:px-4 py-4 lg:py-0 lg:border-r lg:border-b-0 border-b border-gray-400  items-center gap-5 ">
+    <div className="flex flex-col flex-1 lg:px-4 py-4 rounded-md text-zinc-200    items-center gap-5 ">
       <div className="flex flex-col w-full gap-5">
         <div id="userInfo" className="flex flex-col gap-1 items-center ">
           <Image
@@ -75,13 +76,18 @@ const UserSection = ({ user }: { user: User }) => {
             {pricingPlans
               .find((plan) => plan.id === user.membership.id)
               ?.benefits.map((benefit, idx) => (
-                <div key={idx}>{benefit}</div>
+                <div className="flex gap-2 hover:gap-4 tracking-wider transition-all duration-200 items-center" key={idx}>
+                  <span>
+                    <Star color="gold"></Star>
+                  </span>
+                  <span>{benefit}</span>
+                </div>
               ))}
           </div>
         </div>
         <div className="flex self-center flex-col w-full ">
           <span className="text-sm ">Last Payment: {user.lastPayment}</span>
-          <button className="px-5 py-2 bg-gradient-to-br from-green-950 via-green-500 to-green-200 rounded-xl cursor-pointer transition-all duration-200 text-white bg-[length:200%_200%] bg-[position:5%_50%] hover:bg-[position:100%_50%] ease-in-out ">
+          <button className="px-5 py-2 bg-gradient-to-br from-green-950 via-green-500 to-green-200 rounded-md cursor-pointer transition-all duration-200 text-white bg-[length:200%_200%] bg-[position:5%_50%] hover:tracking-widest  hover:bg-[position:100%_50%] ease-in-out ">
             RE-CHARGE
           </button>
         </div>
