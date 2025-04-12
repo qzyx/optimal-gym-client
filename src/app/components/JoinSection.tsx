@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FadeIn from "./Animations/FadeIn";
 import Button from "./UI/Button";
 
@@ -17,7 +18,9 @@ const JoinSection = () => {
         </span>
         <span className="flex flex-col gap-1 items-center">
           <span className="text-2xl">READY TO ASCEND?</span>
-          <Button size="lg" />
+          <Link href="/login">
+            <Button size="lg" />
+          </Link>
         </span>
       </div>
     </FadeIn>

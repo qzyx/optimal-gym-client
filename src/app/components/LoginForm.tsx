@@ -1,15 +1,41 @@
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader, LoaderCircle } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { login } from "../appwrite";
+import Loading from "./UI/Loading";
 
 const LoginForm = () => {
+  const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState(false);
-  // const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<boolean | unknown | string>(false);
+  const [loading, setLoading] = useState(false);
   const [visiblePassword, setVisiblePassword] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      setLoading(true);
+      if (!email || !password) {
+        setError("Email and password are required");
+        return;
+      }
+      if (password.length < 8) {
+        setError("Password must be at least 8 characters long");
+        return;
+      }
+
+      await login(email, password, setLoggedInUser);
+      console.log("login successfully");
+    } catch (err) {
+      setError(err);
+      console.error("Error during login:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
-    <form className="flex flex-col gap-2">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <div className="flex flex-col w-full">
         <label htmlFor="email">Email</label>
         <input
@@ -56,11 +82,23 @@ const LoginForm = () => {
           RESET NOW
         </button>
       </div>
+      {typeof error === "string" ? (
+        <span className="text-red-500 text-center">{error}</span>
+      ) : (
+        typeof error !== "string" &&
+        typeof error !== "boolean" && (
+          <span className="text-red-500 text-center">
+            Something went wrong please try again
+          </span>
+        )
+      )}
+
       <button
         type="submit"
+        disabled={loading}
         className="text-white cursor-pointer hover:scale-102 bg-black rounded-xl py-4 hover:bg-white hover:tracking-widest hover:text-black transition-all duration-200 border border-black"
       >
-        LOG IN
+        <Loading loading={loading}>LOG IN</Loading>
       </button>
       <div className="flex flex-col items-center w-full">
         <span className="text-gray-700">Don&apos;t have a account yet?</span>
