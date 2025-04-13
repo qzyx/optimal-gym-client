@@ -5,9 +5,10 @@ import Link from "next/link";
 import { useActionState, useState } from "react";
 import { register } from "../appwrite";
 import Loading from "./UI/Loading";
+import { useSession } from "@/lib/sessionContext";
 
 const RegisterForm = () => {
-  const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
+  const { setUser } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +30,7 @@ const RegisterForm = () => {
         setError("Password must be at least 8 characters long");
         return;
       }
-      await register(email, password, email, setLoggedInUser);
+      await register(email, password, email);
       console.log("register succesfully");
     } catch (err) {
       setError(err);

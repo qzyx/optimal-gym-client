@@ -1,11 +1,15 @@
-import { Eye, EyeOff, Loader, LoaderCircle } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { login } from "../appwrite";
 import Loading from "./UI/Loading";
+import { Account, Client } from "node-appwrite";
 
 const LoginForm = () => {
-  const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
+  const client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("67f75ff80020d99d9d1f"); // Replace with your project ID
+
+  const account = new Account(client);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<boolean | unknown | string>(false);
@@ -24,9 +28,20 @@ const LoginForm = () => {
         setError("Password must be at least 8 characters long");
         return;
       }
-
-      await login(email, password, setLoggedInUser);
-      console.log("login successfully");
+      const session = await account.createEmailPasswordSession(email, password);
+      const res = await fetch("/api/login", {
+        method: "POST",
+        body: JSON.stringify({ sessionId: session.$id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!res.ok) {
+        setError("Invalid email or password");
+        return;
+      }
+      console.log("Login successful");
+      window.location.href = "/dashboard";
     } catch (err) {
       setError(err);
       console.error("Error during login:", err);

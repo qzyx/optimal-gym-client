@@ -1,5 +1,5 @@
 import { Client, Account, ID } from "node-appwrite";
-
+import { serialize } from "cookie";
 export const client = new Client();
 
 client
@@ -9,25 +9,19 @@ client
 export const account = new Account(client);
 export { ID } from "node-appwrite";
 
-export const login = async (
-  email: string,
-  password: string,
-  setLoggedInUser: React.Dispatch<React.SetStateAction<string | null>>
-) => {
+export const login = async (email: string, password: string) => {
+  const account = new Account(client);
+
   const session = await account.createEmailPasswordSession(email, password);
-  const userSession = await account.getSession(session.$id);
-  setLoggedInUser(userSession.userId);
-  console.log("User logged in:", userSession.userId);
 };
 
 export const register = async (
   email: string,
   password: string,
-  name: string,
-  setLoggedInUser: React.Dispatch<React.SetStateAction<string | null>>
+  name: string
 ) => {
   await account.create(ID.unique(), email, password, name);
-  login(email, password, setLoggedInUser);
+  login(email, password);
 };
 
 export const logout = async (

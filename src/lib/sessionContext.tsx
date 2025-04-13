@@ -3,8 +3,8 @@
 import { useContext, useState, createContext } from "react";
 
 type SessionContextType = {
-  user: string | null;
-  setUser: React.Dispatch<React.SetStateAction<string | null>>;
+  user: object | null;
+  setUser: React.Dispatch<React.SetStateAction<object | null>>;
 };
 
 const SessionContext = createContext<SessionContextType | undefined>(undefined);
@@ -14,7 +14,7 @@ export const SessionProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<any | null>(null);
   return (
     <SessionContext.Provider value={{ user, setUser }}>
       {children}
