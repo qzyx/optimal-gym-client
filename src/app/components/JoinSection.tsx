@@ -1,7 +1,6 @@
 import Link from "next/link";
 import FadeIn from "./Animations/FadeIn";
 import Button from "./UI/Button";
-import { useSession } from "@/lib/sessionContext";
 
 const JoinSection = () => {
   return (

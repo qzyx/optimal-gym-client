@@ -1,21 +1,8 @@
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
-import { Account, Client } from "node-appwrite";
+import { NextRequest, NextResponse } from "next/server";
 
-export interface Request {
-  method: string;
-  body: any;
-  headers: Record<string, string>;
-}
-
-export interface Response {
-  status: (code: number) => Response;
-  json: (data: any) => void;
-  setHeader: (name: string, value: string) => void;
-}
-
-export async function POST(req: Request) {
-  const body = await req.body;
+export async function POST(req: NextRequest) {
+  const body = await req.json();
   const sessionId = body.sessionId;
   try {
     (await cookies()).set({

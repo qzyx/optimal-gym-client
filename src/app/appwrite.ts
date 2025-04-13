@@ -1,32 +1,83 @@
-import { Client, Account, ID } from "node-appwrite";
-import { serialize } from "cookie";
-export const client = new Client();
+import { Account, Client } from "node-appwrite";
 
-client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("67f75ff80020d99d9d1f"); // Replace with your project ID
-
-export const account = new Account(client);
-export { ID } from "node-appwrite";
-
-export const login = async (email: string, password: string) => {
-  const account = new Account(client);
-
-  const session = await account.createEmailPasswordSession(email, password);
-};
-
-export const register = async (
+export const handleSubmitLogin = async (
+  event: React.FormEvent,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setError: React.Dispatch<React.SetStateAction<string | null>>,
   email: string,
   password: string,
-  name: string
+  account: Account
 ) => {
-  await account.create(ID.unique(), email, password, name);
-  login(email, password);
+  event.preventDefault();
+  try {
+    setLoading(true);
+    if (!email || !password) {
+      setError("Email and password are required");
+      return;
+    }
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+    const session = await account.createEmailPasswordSession(email, password);
+    const res = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify({ sessionId: session.$id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      setError("Failed to log in");
+      return;
+    }
+    console.log("Login successful");
+    window.location.href = "/dashboard";
+  } catch (err) {
+    setError("Error during login");
+    console.error("Error during login:", err);
+  } finally {
+    setLoading(false);
+  }
 };
 
-export const logout = async (
-  setLoggedInUser: React.Dispatch<React.SetStateAction<string | null>>
+export const handleSubmitRegister = async (
+  event: React.FormEvent,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setError: React.Dispatch<React.SetStateAction<string | unknown | null>>,
+  name: string,
+  email: string,
+  password: string,
+  client: Client
 ) => {
-  await account.deleteSession("current");
-  setLoggedInUser(null);
+  event.preventDefault();
+  try {
+    setLoading(true);
+    if (!email || !password) {
+      setError("Email and password are required");
+      return;
+    }
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+    const res = await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify({ name, email, password, client }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      setError("Failed to register");
+      return;
+    }
+    console.log("Register successful");
+    window.location.href = "/dashboard";
+  } catch (err) {
+    setError(err);
+    console.error("Error during register:", err);
+  } finally {
+    setLoading(false);
+  }
 };

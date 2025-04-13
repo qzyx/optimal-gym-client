@@ -1,56 +1,25 @@
+import useAppwriteClient from "@/lib/hooks/useAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { handleSubmitLogin } from "../appwrite";
 import Loading from "./UI/Loading";
-import { Account, Client } from "node-appwrite";
 
 const LoginForm = () => {
-  const client = new Client()
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("67f75ff80020d99d9d1f"); // Replace with your project ID
-
-  const account = new Account(client);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<boolean | unknown | string>(false);
   const [loading, setLoading] = useState(false);
   const [visiblePassword, setVisiblePassword] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    try {
-      setLoading(true);
-      if (!email || !password) {
-        setError("Email and password are required");
-        return;
-      }
-      if (password.length < 8) {
-        setError("Password must be at least 8 characters long");
-        return;
-      }
-      const session = await account.createEmailPasswordSession(email, password);
-      const res = await fetch("/api/login", {
-        method: "POST",
-        body: JSON.stringify({ sessionId: session.$id }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (!res.ok) {
-        setError("Invalid email or password");
-        return;
-      }
-      console.log("Login successful");
-      window.location.href = "/dashboard";
-    } catch (err) {
-      setError(err);
-      console.error("Error during login:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { account } = useAppwriteClient();
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+    <form
+      onSubmit={(event) =>
+        handleSubmitLogin(event, setLoading, setError, email, password, account)
+      }
+      className="flex flex-col gap-2"
+    >
       <div className="flex flex-col w-full">
         <label htmlFor="email">Email</label>
         <input

@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-import { Eye, EyeOff, LoaderCircle } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { useActionState, useState } from "react";
-import { register } from "../appwrite";
+import { useState } from "react";
 import Loading from "./UI/Loading";
-import { useSession } from "@/lib/sessionContext";
+import { handleSubmitRegister } from "../appwrite";
+import useAppwriteClient from "@/lib/hooks/useAppwriteClient";
 
 const RegisterForm = () => {
-  const { setUser } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,30 +17,22 @@ const RegisterForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    try {
-      setLoading(true);
-      if (!email || !password) {
-        setError("Email and password are required");
-        return;
-      }
-      if (password.length < 8) {
-        setError("Password must be at least 8 characters long");
-        return;
-      }
-      await register(email, password, email);
-      console.log("register succesfully");
-    } catch (err) {
-      setError(err);
-      console.error("Error during registration:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  const { client } = useAppwriteClient();
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+    <form
+      onSubmit={(e) =>
+        handleSubmitRegister(
+          e,
+          setLoading,
+          setError,
+          name,
+          email,
+          password,
+          client
+        )
+      }
+      className="flex flex-col gap-2"
+    >
       <div className="flex flex-col w-full">
         <label htmlFor="email">Name</label>
         <input
