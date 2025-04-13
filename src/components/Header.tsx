@@ -1,4 +1,4 @@
-import getUserFromCookies from "@/helpers/getUserFromCookies";
+import getUserFromCookies from "@/utils/getUserFromCookies";
 import Link from "next/link";
 
 const Header = async () => {
