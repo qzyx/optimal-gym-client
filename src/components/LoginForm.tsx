@@ -1,8 +1,8 @@
-import useAppwriteClient from "@/lib/hooks/useAppwriteClient";
+import useAppwriteClient from "@/hooks/useAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { handleSubmitLogin } from "../appwrite";
+import { handleSubmitLogin } from "../lib/appwrite";
 import Loading from "./UI/Loading";
 
 const LoginForm = () => {

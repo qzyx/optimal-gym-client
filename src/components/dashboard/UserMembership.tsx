@@ -1,6 +1,6 @@
-import { getDaysBetweenDates } from "@/lib/time";
+import { getDaysBetweenDates } from "@/helpers/time";
 import { Crown, Star } from "lucide-react";
-import { pricingPlans } from "../../../../public/pricingPlans";
+import { pricingPlans } from "../../../public/pricingPlans";
 import { User } from "./Main/Dashboard";
 import UserRechargeButton from "./UsertRechargeButton";
 

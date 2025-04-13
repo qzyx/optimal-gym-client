@@ -1,4 +1,4 @@
-import { formatTime } from "@/lib/time";
+import { formatTime } from "@/helpers/time";
 import Image from "next/image";
 import React from "react";
 import { User } from "./Main/Dashboard";

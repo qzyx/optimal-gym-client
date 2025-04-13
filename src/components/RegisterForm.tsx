@@ -4,8 +4,8 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Loading from "./UI/Loading";
-import { handleSubmitRegister } from "../appwrite";
-import useAppwriteClient from "@/lib/hooks/useAppwriteClient";
+import { handleSubmitRegister } from "../lib/appwrite";
+import useAppwriteClient from "@/hooks/useAppwriteClient";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");

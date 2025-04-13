@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { User } from "../Main/Dashboard";
-import { monthNames } from "../../../../../public/monthNames";
+import { monthNames } from "../../../../public/monthNames";
 
 ChartJS.register(
   BarElement,
