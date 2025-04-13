@@ -20,9 +20,10 @@ export const handleSubmitLogin = async (
       return;
     }
     const session = await account.createEmailPasswordSession(email, password);
+    console.log("Session created:", session);
     const res = await fetch("/api/login", {
       method: "POST",
-      body: JSON.stringify({ sessionId: session.$id }),
+      body: JSON.stringify({ session: session }),
       headers: {
         "Content-Type": "application/json",
       },

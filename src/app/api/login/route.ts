@@ -3,11 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const sessionId = body.sessionId;
+  const { session } = body;
   try {
     (await cookies()).set({
       name: "sessionSecret",
-      value: sessionId,
+      value: JSON.stringify(session),
       httpOnly: true,
       path: "/",
       maxAge: 60 * 60 * 24 * 7,
