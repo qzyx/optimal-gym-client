@@ -53,12 +53,12 @@ const UserMembership = ({ user }: { user: User }) => {
       </div>
       <div className="w-full flex flex-col gap-1 ">
         <span>Benefits:</span>
-        <div className="flex flex-col gap-1 text-sm select-text">
+        <div className="flex flex-col gap-1 text-sm select-text overflow-x-scroll no-scrollbar">
           {pricingPlans
             .find((plan) => plan.id === user.membership.id)
             ?.benefits.map((benefit, idx) => (
               <div
-                className="flex gap-2 hover:gap-4 tracking-wider transition-all duration-200 items-center"
+                className="flex gap-2 hover:gap-4 lg:text-xs xl:text-base tracking-wider transition-all duration-200 items-center whitespace-nowrap"
                 key={idx}
               >
                 <span>
