@@ -4,6 +4,8 @@ import React from "react";
 import Button from "./UI/Button";
 import { motion } from "framer-motion";
 import { Ticket } from "lucide-react";
+import Link from "next/link";
+import { UserSession } from "@/types/UserSession";
 type Plan = {
   name: string;
   price: string;
@@ -11,7 +13,7 @@ type Plan = {
   benefits: string[];
   isPopular?: boolean;
 };
-const PricingCard = ({ plan }: { plan: Plan }) => {
+const PricingCard = ({ plan, user }: { plan: Plan; user: UserSession }) => {
   return (
     <motion.div
       initial={{
@@ -43,9 +45,9 @@ const PricingCard = ({ plan }: { plan: Plan }) => {
           <span key={idx}>{benefit}</span>
         ))}
       </div>
-      <div className="absolute bottom-5">
+      <Link href={user ? "/dashboard" : "/login"} className="absolute bottom-5">
         <Button size="md" text="BUY NOW" icon={Ticket} />
-      </div>
+      </Link>
     </motion.div>
   );
 };

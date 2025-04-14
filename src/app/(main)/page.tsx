@@ -10,7 +10,7 @@ const page = async () => {
   return (
     <div className="flex flex-col gap-10">
       <HeroSection />
-      <PricingSection />
+      <PricingSection user={user} />
       <AboutSection />
       <ContactSection />
     </div>
