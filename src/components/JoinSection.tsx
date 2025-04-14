@@ -1,8 +1,9 @@
 import Link from "next/link";
 import FadeIn from "./Animations/FadeIn";
 import Button from "./UI/Button";
+import { UserSession } from "@/types/UserSession";
 
-const JoinSection = () => {
+const JoinSection = ({ user }: { user: UserSession }) => {
   return (
     <FadeIn delayTime={0.2} x={-10}>
       <div className="px-10 py-5 text-white rounded-md items-center flex flex-col gap-4 bg-black/60">
@@ -18,8 +19,8 @@ const JoinSection = () => {
         </span>
         <span className="flex flex-col gap-1 items-center">
           <span className="text-2xl">READY TO ASCEND?</span>
-          <Link href="/login">
-            <Button size="lg" />
+          <Link href={user ? "/dashboard" : "/login"}>
+            <Button text={user ? "To Dashboard" : "Join NOW"} size="lg" />
           </Link>
         </span>
       </div>

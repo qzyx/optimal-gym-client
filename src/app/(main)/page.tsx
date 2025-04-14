@@ -9,7 +9,7 @@ const page = async () => {
   console.log(user);
   return (
     <div className="flex flex-col gap-10">
-      <HeroSection />
+      <HeroSection user={user} />
       <PricingSection user={user} />
       <AboutSection />
       <ContactSection />

@@ -3,8 +3,9 @@ import HeroFooter from "../HeroFooter";
 import HeroImage from "../HeroImage";
 import JoinSection from "../JoinSection";
 import BouncingArrow from "../UI/BouncingArrow";
+import { UserSession } from "@/types/UserSession";
 
-const HeroSection = () => {
+const HeroSection = ({ user }: { user: UserSession }) => {
   return (
     <section
       id="home"
@@ -12,7 +13,7 @@ const HeroSection = () => {
     >
       <HeroImage />
       <Heading />
-      <JoinSection />
+      <JoinSection user={user} />
       <HeroFooter />
       <BouncingArrow />
     </section>

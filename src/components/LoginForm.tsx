@@ -1,3 +1,4 @@
+"use client";
 import useAppwriteClient from "@/hooks/useAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
