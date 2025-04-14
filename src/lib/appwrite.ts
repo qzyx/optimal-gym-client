@@ -1,4 +1,4 @@
-import { Account, Client } from "node-appwrite";
+import { Account } from "node-appwrite";
 
 export const handleSubmitLogin = async (
   event: React.FormEvent,
@@ -49,9 +49,10 @@ export const handleSubmitRegister = async (
   name: string,
   email: string,
   password: string,
-  client: Client
+  account: Account
 ) => {
   event.preventDefault();
+
   try {
     setLoading(true);
     if (!email || !password) {
@@ -62,19 +63,10 @@ export const handleSubmitRegister = async (
       setError("Password must be at least 8 characters long");
       return;
     }
-    const res = await fetch("/api/register", {
-      method: "POST",
-      body: JSON.stringify({ name, email, password, client }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!res.ok) {
-      setError("Failed to register");
-      return;
-    }
+    console.log("Register function called");
+    const user = await account.create("unique()", email, password, name);
     console.log("Register successful");
-    window.location.href = "/dashboard";
+    window.location.href = "/login";
   } catch (err) {
     setError(err);
     console.error("Error during register:", err);

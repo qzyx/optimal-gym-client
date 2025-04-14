@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Users } from "node-appwrite";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { email, password, name, client } = body;
-  const users = new Users(client);
+  const { email, password, name, account } = body;
 
   try {
-    const user = await users.create("unique()", email, password, name);
+    const user = await account.create("unique()", email, password, name);
 
     return NextResponse.json({
       message: "User registered successfully",

@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import Loading from "../UI/Loading";
 import { handleSubmitRegister } from "../../lib/appwrite";
-import useAppwriteClient from "@/hooks/useAppwriteClient";
+import useAppwriteClient from "@/hooks/getAppwriteClient";
+import getAppwriteClient from "@/hooks/getAppwriteClient";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const RegisterForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
-  const { client } = useAppwriteClient();
+  const { account } = getAppwriteClient();
   return (
     <form
       onSubmit={(e) =>
@@ -28,7 +29,7 @@ const RegisterForm = () => {
           name,
           email,
           password,
-          client
+          account
         )
       }
       className="flex flex-col gap-2"

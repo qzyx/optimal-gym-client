@@ -1,10 +1,11 @@
 "use client";
-import useAppwriteClient from "@/hooks/useAppwriteClient";
+import useAppwriteClient from "@/hooks/getAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { handleSubmitLogin } from "../../lib/appwrite";
 import Loading from "../UI/Loading";
+import getAppwriteClient from "@/hooks/getAppwriteClient";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [visiblePassword, setVisiblePassword] = useState(false);
 
-  const { account } = useAppwriteClient();
+  const { account } = getAppwriteClient();
   return (
     <form
       onSubmit={(event) =>

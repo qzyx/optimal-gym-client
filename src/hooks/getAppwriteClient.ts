@@ -1,6 +1,6 @@
 import { Account, Client } from "node-appwrite";
 import { useMemo } from "react";
-const useAppwriteClient = () => {
+const getAppwriteClient = () => {
   const client = useMemo(() => {
     return new Client()
       .setEndpoint("https://cloud.appwrite.io/v1")
@@ -12,4 +12,4 @@ const useAppwriteClient = () => {
   return { client, account };
 };
 
-export default useAppwriteClient;
+export default getAppwriteClient;
