@@ -1,4 +1,4 @@
-import { Account } from "node-appwrite";
+import { Account, Client, Databases, ID } from "node-appwrite";
 
 export const handleSubmitLogin = async (
   event: React.FormEvent,
@@ -49,9 +49,25 @@ export const handleSubmitRegister = async (
   name: string,
   email: string,
   password: string,
-  account: Account
+  appwrite: {
+    account: Account;
+    client: Client;
+  }
 ) => {
   event.preventDefault();
+  const databases = new Databases(appwrite.client);
+
+  const DATABASE_ID = "67f950b50039e0b72f94";
+  const COLLECTION_ID = "67f950c400265a40669d";
+
+  const initialUserData = {
+    name,
+    sessionCount: 0,
+    timeElapsed: 0,
+    workouts: [],
+    pfp: null,
+    membership: null,
+  };
 
   try {
     setLoading(true);
@@ -64,8 +80,22 @@ export const handleSubmitRegister = async (
       return;
     }
     console.log("Register function called");
-    const user = await account.create("unique()", email, password, name);
+    const user = await appwrite.account.create(
+      "unique()",
+      email,
+      password,
+      name
+    );
+    console.log("User created:", user);
+    const userData = await databases.createDocument(
+      DATABASE_ID,
+      COLLECTION_ID,
+      ID.unique(),
+      initialUserData
+    );
+    console.log("User data created:");
     console.log("Register successful");
+
     window.location.href = "/login";
   } catch (err) {
     setError(err);

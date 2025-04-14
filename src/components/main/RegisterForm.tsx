@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
+import useAppwriteClient from "@/hooks/useAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import Loading from "../UI/Loading";
 import { handleSubmitRegister } from "../../lib/appwrite";
-import useAppwriteClient from "@/hooks/getAppwriteClient";
-import getAppwriteClient from "@/hooks/getAppwriteClient";
+import Loading from "../UI/Loading";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -18,7 +17,7 @@ const RegisterForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
-  const { account } = getAppwriteClient();
+  const appwrite = useAppwriteClient();
   return (
     <form
       onSubmit={(e) =>
@@ -29,7 +28,7 @@ const RegisterForm = () => {
           name,
           email,
           password,
-          account
+          appwrite
         )
       }
       className="flex flex-col gap-2"

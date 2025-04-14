@@ -6,6 +6,7 @@ import { theme } from "../../../../public/theme";
 import FirstDashboardPart from "./FirstDashboardPart";
 import SecondDashboardPart from "./SecondDashboardPart";
 import UserSection from "./UserSection";
+import { X } from "lucide-react";
 type workout = {
   time: number;
   date: string;
@@ -230,6 +231,12 @@ const DashBoard = () => {
     <>
       {openSettings && (
         <div className="absolute backdrop-blur-lg shadow-2xl border w-60 md:w-100 border-gray-500 top-[50%] z-20 left-[50%] flex flex-col items-center text-white -translate-y-[50%] -translate-x-[50%] p-4 bg-neutral-800/90 rounded-lg space-y-6">
+          <button
+            className="absolute top-5 right-5 cursor-pointer "
+            onClick={() => setOpenSettings(false)}
+          >
+            <X></X>
+          </button>
           <h2 className="text-lg font-semibold tracking-wide">Settings</h2>
           <div className="flex flex-col gap-6 w-full">
             <div className="w-full">
