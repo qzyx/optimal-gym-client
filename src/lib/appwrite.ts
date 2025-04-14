@@ -87,7 +87,7 @@ export const handleSubmitRegister = async (
       name
     );
     console.log("User created:", user);
-    const userData = await databases.createDocument(
+    await databases.createDocument(
       DATABASE_ID,
       COLLECTION_ID,
       ID.unique(),
