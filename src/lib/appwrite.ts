@@ -82,3 +82,19 @@ export const handleSubmitRegister = async (
     setLoading(false);
   }
 };
+
+export const handleSubmitLogout = async () => {
+  console.log("Logout function called");
+  try {
+    const res = await fetch("/api/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}), // Send an empty JSON object if required
+    });
+    console.log("Logout response:", res);
+  } catch (err) {
+    console.error("Error during logout:", err);
+  }
+};

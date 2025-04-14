@@ -1,22 +1,47 @@
-import AuthLayout from "@/components/Layout/AuthLayout";
-import LoginForm from "@/components/main/LoginForm";
-import LoginHeading from "@/components/main/LoginHeading";
-import Image from "next/image";
-import React from "react";
+"use client";
 
-const logout = () => {
+import AuthLayout from "@/components/Layout/AuthLayout";
+import LogoutHeading from "@/components/main/LogoutHeading";
+import { handleSubmitLogout } from "@/lib/appwrite";
+import { useEffect, useState } from "react";
+
+const Page = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    const handleLogout = async () => {
+      try {
+        setIsLoading(true);
+        await handleSubmitLogout();
+        setIsLoading(false);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        window.location.href = "/";
+      } catch (error) {
+        console.error("Error during logout:", error);
+        setError("Logout failed. Please try again.");
+        setIsLoading(false);
+      }
+    };
+    handleLogout();
+  }, []);
+
   return (
     <AuthLayout pageKey="logout">
-      <div className="max-w-100 min-w-10 gap-5 p-3 tracking-wide mt-[20vh] bg-white w-100 rounded-md flex flex-col">
-        <LoginHeading />
-        <LoginForm />
-        <button className="w-10 h-10 p-4 relative self-center cursor-pointer hover:scale-105 transition-all duration-150">
-          <Image alt="google" fill src={"/google.png"}></Image>
-        </button>
+      <div className="max-w-100 min-w-10 gap-5 p-3 flex flex-col items-center tracking-wide mt-[20vh] bg-white w-100 rounded-md ">
+        <LogoutHeading />
+        {isLoading ? (
+          <div className="h-15 w-15 rounded-full border-t-1 my-20 animate-spin"></div>
+        ) : !error ? (
+          <>
+            <div className="h-15 w-15 rounded-full border-t-1 my-20 animate-spin"></div>
+            <p>Logout complete. Redirecting...</p>
+          </>
+        ) : (
+          <span className="text-red-500">Error during login</span>
+        )}
       </div>
-      \
     </AuthLayout>
   );
 };
 
-export default logout;
+export default Page;
