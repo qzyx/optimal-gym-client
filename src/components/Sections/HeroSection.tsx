@@ -1,7 +1,7 @@
-import Heading from "../HeroHeading";
-import HeroFooter from "../HeroFooter";
-import HeroImage from "../HeroImage";
-import JoinSection from "../JoinSection";
+import Heading from "../main/HeroHeading";
+import HeroFooter from "../main/HeroFooter";
+import HeroImage from "../main/HeroImage";
+import JoinSection from "../main/JoinSection";
 import BouncingArrow from "../UI/BouncingArrow";
 import { UserSession } from "@/types/UserSession";
 

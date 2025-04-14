@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import FadeIn from "./Animations/FadeIn";
+import FadeIn from "../Animations/FadeIn";
 
 const Hammer = () => {
   return (

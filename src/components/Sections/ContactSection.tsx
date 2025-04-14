@@ -1,7 +1,7 @@
 import React from "react";
-import GetInTouch from "../GetInTouch";
-import SendUsAMessage from "../SendUsAMessage";
-import ContactHeading from "../ContactHeading";
+import GetInTouch from "../main/GetInTouch";
+import SendUsAMessage from "../main/SendUsAMessage";
+import ContactHeading from "../main/ContactHeading";
 
 const ContactSection = () => {
   return (

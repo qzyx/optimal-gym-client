@@ -1,8 +1,8 @@
 "use client";
 
 import AuthLayout from "@/components/Layout/AuthLayout";
-import RegisterForm from "@/components/RegisterForm";
-import RegisterHeading from "@/components/RegisterHeading";
+import RegisterForm from "@/components/main/RegisterForm";
+import RegisterHeading from "@/components/main/RegisterHeading";
 
 const page = () => {
   return (

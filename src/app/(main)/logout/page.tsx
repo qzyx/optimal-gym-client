@@ -1,6 +1,6 @@
 import AuthLayout from "@/components/Layout/AuthLayout";
-import LoginForm from "@/components/LoginForm";
-import LoginHeading from "@/components/LoginHeading";
+import LoginForm from "@/components/main/LoginForm";
+import LoginHeading from "@/components/main/LoginHeading";
 import Image from "next/image";
 import React from "react";
 

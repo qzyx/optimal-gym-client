@@ -1,6 +1,6 @@
 import { Clock, Dumbbell, UserCheck, Zap } from "lucide-react";
 import React from "react";
-import FadeIn from "./Animations/FadeIn";
+import FadeIn from "../Animations/FadeIn";
 
 const AboutPoints = () => {
   return (

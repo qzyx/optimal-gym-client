@@ -1,7 +1,7 @@
 import React from "react";
-import PricingCard from "../PricingCard";
-import PricingHeading from "../PricingHeading";
-import PricingSubText from "../PricingSubText";
+import PricingCard from "../main/PricingCard";
+import PricingHeading from "../main/PricingHeading";
+import PricingSubText from "../main/PricingSubText";
 import { pricingPlans } from "../../../public/pricingPlans";
 import { UserSession } from "@/types/UserSession";
 

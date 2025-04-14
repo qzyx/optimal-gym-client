@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 import { motion } from "framer-motion";
 import { Ticket } from "lucide-react";
 import Link from "next/link";

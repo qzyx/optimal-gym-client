@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import NavBar from "@/components/NavBar";
+import Header from "@/components/main/Header";
+import NavBar from "@/components/main/NavBar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";

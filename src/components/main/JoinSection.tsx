@@ -1,6 +1,6 @@
 import Link from "next/link";
-import FadeIn from "./Animations/FadeIn";
-import Button from "./UI/Button";
+import FadeIn from "../Animations/FadeIn";
+import Button from "../UI/Button";
 import { UserSession } from "@/types/UserSession";
 
 const JoinSection = ({ user }: { user: UserSession }) => {

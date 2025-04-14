@@ -3,8 +3,8 @@ import useAppwriteClient from "@/hooks/useAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { handleSubmitLogin } from "../lib/appwrite";
-import Loading from "./UI/Loading";
+import { handleSubmitLogin } from "../../lib/appwrite";
+import Loading from "../UI/Loading";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -89,7 +89,7 @@ const LoginForm = () => {
         <span className="text-gray-700">Don&apos;t have a account yet?</span>
         <Link
           href={"/register"}
-          className="text-black cursor-pointer relative text-black relative cursor-pointer after:content-[''] after:h-[2px] after:absolute after:bottom-0 after:left-[50%] after:bg-black after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out after:translate-x-[-50%]"
+          className="text-black cursor-pointer relative  after:content-[''] after:h-[2px] after:absolute after:bottom-0 after:left-[50%] after:bg-black after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out after:translate-x-[-50%]"
           type="button"
         >
           REGISTER

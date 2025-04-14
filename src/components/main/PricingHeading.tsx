@@ -1,5 +1,5 @@
 import React from "react";
-import FadeIn from "./Animations/FadeIn";
+import FadeIn from "../Animations/FadeIn";
 
 const PricingHeading = () => {
   return (

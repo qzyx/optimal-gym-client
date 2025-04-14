@@ -2,7 +2,7 @@ import React from "react";
 import SendMessageNameEmail from "./SendMessageNameEmain";
 import SendMessageTopic from "./SendMessageTopic";
 import SendMessageMessage from "./SendMessageMessage";
-import FadeIn from "./Animations/FadeIn";
+import FadeIn from "../Animations/FadeIn";
 
 const SendUsAMessage = () => {
   return (
