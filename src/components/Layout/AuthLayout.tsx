@@ -19,6 +19,7 @@ const AuthLayout = ({
           exit={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
+          className="w-[90%] max-w-100"
         >
           {children}
         </motion.div>
