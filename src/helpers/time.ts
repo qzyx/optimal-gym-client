@@ -16,6 +16,9 @@ export const formatTime = (timeInSeconds: number): string => {
   }
 };
 export const getDaysBetweenDates = (endDate: string): number => {
+  if (!endDate) {
+    return 0; // Return 0 if endDate is not provided
+  }
   const start = new Date();
   const end = new Date(endDate);
 

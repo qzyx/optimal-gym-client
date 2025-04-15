@@ -18,6 +18,7 @@ export type User = {
   MembershipEndedDate: string;
   workouts: any;
   membershipType: string;
+  lastPayment: string;
 };
 export const staticUser = {
   name: "Jano Mrkva",
