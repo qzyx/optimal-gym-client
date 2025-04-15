@@ -29,13 +29,12 @@ export const handleSubmitLogin = async (
       },
     });
     if (!res.ok) {
-      setError("Failed to log in");
-      return;
+      setError("Failed to store session into cookies");
     }
     console.log("Login successful");
     window.location.href = "/dashboard";
   } catch (err) {
-    setError("Error during login");
+    setError("Error during login check email and password");
     console.error("Error during login:", err);
   } finally {
     setLoading(false);
@@ -71,15 +70,15 @@ export const handleSubmitRegister = async (
 
   try {
     setLoading(true);
-    if (!email || !password) {
-      setError("Email and password are required");
+    if (!email || !password || !name) {
+      setError("Name. Email and password are required");
       return;
     }
     if (password.length < 8) {
       setError("Password must be at least 8 characters long");
       return;
     }
-    console.log("Register function called");
+
     const user = await appwrite.account.create(
       "unique()",
       email,

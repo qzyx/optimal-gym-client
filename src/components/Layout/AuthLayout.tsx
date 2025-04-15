@@ -1,8 +1,7 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 const AuthLayout = ({
   children,
   pageKey,
@@ -12,18 +11,16 @@ const AuthLayout = ({
 }) => {
   return (
     <div className="flex justify-center items-center select-none  ">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={pageKey}
-          initial={{ opacity: 0 }}
-          exit={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="w-[90%] max-w-100"
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={pageKey}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="w-[90%] max-w-100"
+      >
+        {children}
+      </motion.div>
     </div>
   );
 };

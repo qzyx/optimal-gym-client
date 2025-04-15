@@ -13,7 +13,7 @@ const UserSection = ({
 }) => {
   return (
     <div className="flex flex-col flex-1 relative lg:px-4 lg:py-0 lg:justify-between overflow-hidden py-4 rounded-md text-zinc-200 items-center  ">
-      <div className="flex absolute top-0  gap-2 left-0 flex-col ">
+      <div className="flex absolute top-0  gap-2 left-0 w-full justify-between ">
         <Link
           className=" p-2  rounded-md tracking-widest bg-gradient-to-r from-blue-900 to-indigo-600 bg-[length:200%_100%] bg-left hover:bg-right transition-all duration-500"
           href={"/"}

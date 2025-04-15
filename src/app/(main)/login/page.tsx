@@ -8,7 +8,7 @@ import Image from "next/image";
 const Page = () => {
   return (
     <AuthLayout pageKey={"login"}>
-      <div className="w-full gap-5 p-3 tracking-wide mt-[20vh] bg-white w-100 rounded-md flex flex-col">
+      <div className="w-full gap-5 p-3 tracking-wide mt-[20vh] bg-white  rounded-md flex flex-col">
         <LoginHeading />
         <LoginForm />
         <button className="w-10 h-10 p-4 relative self-center cursor-pointer hover:scale-105 transition-all duration-150">

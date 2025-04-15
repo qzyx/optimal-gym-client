@@ -14,8 +14,9 @@ const Page = () => {
         setIsLoading(true);
         await handleSubmitLogout();
         setIsLoading(false);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        window.location.href = "/";
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
       } catch (error) {
         console.error("Error during logout:", error);
         setError("Logout failed. Please try again.");

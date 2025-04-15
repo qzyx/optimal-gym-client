@@ -7,11 +7,10 @@ const Pannata = () => {
     <FadeIn x={50} inView={true}>
       <span className="flex   flex-col items-center md:block gap-2">
         <Image
-          className="float-left"
+          className="float-left "
           alt="panatta"
           width={300}
           height={300}
-          objectFit="cover"
           src={"/panatta.png"}
         ></Image>
       </span>
