@@ -12,7 +12,9 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { User } from "../Main/Dashboard";
+
+import { Workout } from "@/types/Workout";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 
 ChartJS.register(
   CategoryScale,
@@ -25,11 +27,17 @@ ChartJS.register(
   Filler
 );
 
-export default function TimeElapsedChart({ user }: { user: User }) {
-  const labels = user.lastWorkouts.slice(-6).map((workout) => workout.date); // Extract date for last 6 workouts
-  const dataValues = user.lastWorkouts
-    .slice(-6)
-    .map((workout) => workout.time / 60); // Convert time to hours for last 6 workouts
+export default function TimeElapsedChart({
+  user,
+}: {
+  user: UserDataFromDatabase;
+}) {
+  const labels = user.workouts
+    ? user.workouts.slice(-6).map((workout: Workout) => workout.date)
+    : [0]; // Extract date for last 6 workouts
+  const dataValues = user.workouts
+    ? user.workouts.slice(-6).map((workout: Workout) => workout.duration / 60)
+    : [0]; // Convert time to hours for last 6 workouts
 
   const maxValue = Math.max(...dataValues) + Math.min(...dataValues) / 2; // Calculate max value for y-axis
   const minValue = Math.min(...dataValues) - Math.min(...dataValues) / 2;

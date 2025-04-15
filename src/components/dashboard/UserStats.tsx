@@ -1,10 +1,11 @@
 import { formatTime } from "@/helpers/time";
 import Image from "next/image";
 import React from "react";
-import { User } from "./Main/Dashboard";
-import { Workout } from "@/types/Workout";
 
-const UserStats = ({ user }: { user: User }) => {
+import { Workout } from "@/types/Workout";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+
+const UserStats = ({ user }: { user: UserDataFromDatabase }) => {
   return (
     <div className="flex flex-col w-full gap-5">
       <div id="userInfo" className="flex flex-col gap-1 items-center ">

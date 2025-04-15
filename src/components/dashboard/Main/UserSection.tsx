@@ -6,8 +6,9 @@ import Link from "next/link";
 import { useState } from "react";
 import UserMembership from "../UserMembership";
 import UserStats from "../UserStats";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 
-const UserSection = ({ user }: { user: any }) => {
+const UserSection = ({ user }: { user: UserDataFromDatabase }) => {
   const [openSettings, setOpenSettings] = useState<boolean>(false);
   return (
     <>

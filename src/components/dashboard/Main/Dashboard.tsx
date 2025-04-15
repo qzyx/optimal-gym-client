@@ -1,25 +1,10 @@
+import { getUserInfoFromDatabase } from "@/lib/appwrite";
 import getUserFromCookies from "@/utils/getUserFromCookies";
 import FirstDashboardPart from "./FirstDashboardPart";
 import SecondDashboardPart from "./SecondDashboardPart";
 import UserSection from "./UserSection";
-import { getUserInfoFromDatabase } from "@/lib/appwrite";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 
-export type User = {
-  $collectionId: string;
-  $createdAt: Date;
-  $databaseId: string;
-  $id: string;
-  $permissions: string[];
-  $updatedAt: Date;
-  name: string;
-  email: string;
-  pfp: string | null;
-  MembershipStartedDate: string;
-  MembershipEndedDate: string;
-  workouts: any;
-  membershipType: string;
-  lastPayment: string;
-};
 export const staticUser = {
   name: "Jano Mrkva",
   sessionCount: 123,
@@ -215,15 +200,14 @@ export const staticUser = {
 
 const DashBoard = async () => {
   const user = await getUserFromCookies();
-
   const userDataFromDatabase = await getUserInfoFromDatabase(user.userId);
-  console.log("userDataFromDatabase", userDataFromDatabase);
+  console.log("UserDataFromDatabase", userDataFromDatabase);
   return (
     <>
-      <div className="py-4 px-4 relative flex flex-col gap-10 overflow-hidden lg:gap-2 lg:flex-row lg:w-[95%] lg:max-h-[90vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
+      <div className="py-4 px-4 relative flex flex-col gap-10 overflow-hidden lg:gap-2 lg:flex-row lg:w-[95%] lg:h-[90vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
         <UserSection user={userDataFromDatabase} />
-        {/* <FirstDashboardPart user={user} />
-        <SecondDashboardPart user={user} /> */}
+        <FirstDashboardPart user={userDataFromDatabase} />
+        <SecondDashboardPart user={userDataFromDatabase} />
       </div>
     </>
   );

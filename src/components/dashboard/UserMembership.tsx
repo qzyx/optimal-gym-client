@@ -1,12 +1,13 @@
 import { formatTime, getDaysBetweenDates } from "@/helpers/time";
 import { Crown, Star } from "lucide-react";
 import { pricingPlans } from "../../../public/pricingPlans";
-import { User } from "./Main/Dashboard";
-import UserRechargeButton from "./UsertRechargeButton";
 
-const UserMembership = ({ user }: { user: User }) => {
+import UserRechargeButton from "./UsertRechargeButton";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+
+const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
   return (
-    <div id="memberShip" className="flex flex-col w-full gap-5">
+    <div id="memberShip" className="flex lg:grow flex-col w-full gap-5">
       <div className="flex flex-col w-full gap-1">
         <span className="text-xl">Membership</span>
         <span className="text-xl  self-center flex flex-col items-center text-center">
@@ -51,9 +52,9 @@ const UserMembership = ({ user }: { user: User }) => {
           <span>{getDaysBetweenDates(user.MembershipEndedDate)} Days</span>
         </div>
       </div>
-      <div className="w-full flex flex-col gap-1 ">
+      <div className="w-full flex flex-col lg:grow gap-1 ">
         <span>Benefits:</span>
-        <div className="flex flex-col gap-1 text-sm select-text overflow-x-scroll no-scrollbar">
+        <div className="flex flex-col lg:grow  gap-1 text-sm select-text overflow-x-scroll no-scrollbar">
           {pricingPlans
             .find((plan) => plan.id === user.membershipType)
             ?.benefits.map((benefit, idx) => (
@@ -66,7 +67,11 @@ const UserMembership = ({ user }: { user: User }) => {
                 </span>
                 <span>{benefit}</span>
               </div>
-            ))}
+            )) || (
+            <span className="flex py-20 lg:py-0 w-full h-full justify-center items-center">
+              Buy a membership first
+            </span>
+          )}
         </div>
       </div>
       <div className="flex self-center flex-col w-full ">

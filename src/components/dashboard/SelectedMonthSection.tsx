@@ -1,15 +1,17 @@
 "use client";
 
 import React from "react";
-import { User } from "./Main/Dashboard";
+
 import { formatTime } from "@/helpers/time";
 import { AnimatePresence, motion } from "framer-motion";
+import { Workout } from "@/types/Workout";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 const SelectedMonthSection = ({
   openedMonth,
   user,
 }: {
   openedMonth: string | null;
-  user: User;
+  user: UserDataFromDatabase;
 }) => {
   return (
     <div className="flex-1 w-full flex  items-center justify-center">
@@ -46,7 +48,8 @@ const SelectedMonthSection = ({
                     {user.workouts[openedMonth.toLowerCase()]?.length > 0
                       ? formatTime(
                           user.workouts[openedMonth.toLowerCase()].reduce(
-                            (acc, workout) => acc + (workout.time || 0),
+                            (acc: number, workout: Workout) =>
+                              acc + (workout.duration || 0),
                             0
                           ) / user.workouts[openedMonth.toLowerCase()].length
                         )
@@ -73,7 +76,8 @@ const SelectedMonthSection = ({
                     {user.workouts[openedMonth.toLowerCase()]?.length > 0
                       ? formatTime(
                           user.workouts[openedMonth.toLowerCase()].reduce(
-                            (acc, workout) => acc + (workout.time || 0),
+                            (acc: number, workout: Workout) =>
+                              acc + (workout.duration || 0),
                             0
                           )
                         )

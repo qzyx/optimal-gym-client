@@ -3,9 +3,9 @@
 import { useState } from "react";
 import SelectedMonthSection from "../SelectedMonthSection";
 import WorkoutsCountsChartSection from "../WorkoutsCountsChartSection";
-import { User } from "./Dashboard";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 
-const SecondDashboardPart = ({ user }: { user: User }) => {
+const SecondDashboardPart = ({ user }: { user: UserDataFromDatabase }) => {
   const [openedMonth, setOpenedMonth] = useState<string | null>(null);
 
   return (

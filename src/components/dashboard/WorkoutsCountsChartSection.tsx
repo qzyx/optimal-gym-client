@@ -1,11 +1,11 @@
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 import WorkoutsCountsChart from "./charts/WorkoutsCountsChart";
-import { User } from "./Main/Dashboard";
 
 const WorkoutsCountsChartSection = ({
   user,
   setOpenedMonth,
 }: {
-  user: User;
+  user: UserDataFromDatabase;
   setOpenedMonth: (month: string) => void;
 }) => {
   const handleClick = (month: string) => {
