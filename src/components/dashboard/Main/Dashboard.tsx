@@ -1,37 +1,25 @@
-"use client";
-
-import { useState } from "react";
+import getUserFromCookies from "@/utils/getUserFromCookies";
 import FirstDashboardPart from "./FirstDashboardPart";
 import SecondDashboardPart from "./SecondDashboardPart";
 import UserSection from "./UserSection";
-import Settings from "@/components/main/Settings";
+import { getUserInfoFromDatabase } from "@/lib/appwrite";
 
-type workout = {
-  time: number;
-  date: string;
-};
 export type User = {
+  $collectionId: string;
+  $createdAt: Date;
+  $databaseId: string;
+  $id: string;
+  $permissions: string[];
+  $updatedAt: Date;
   name: string;
-  sessionCount: number;
-  timeElapsed: number;
+  email: string;
   pfp: string | null;
-  lastPayment: string;
-  membershipDateStarted: string;
-  membershipDateEnding: string;
-  lastWorkouts: workout[];
-  workouts: {
-    [month: string]: workout[];
-  };
-  wourkoutCount: {
-    month: string;
-    count: number;
-  }[];
-  membership: {
-    name: string;
-    id: string;
-  };
+  MembershipStartedDate: string;
+  MembershipEndedDate: string;
+  workouts: any;
+  membershipType: string;
 };
-export const user: User = {
+export const staticUser = {
   name: "Jano Mrkva",
   sessionCount: 123,
   timeElapsed: 794532,
@@ -224,15 +212,17 @@ export const user: User = {
   },
 };
 
-const DashBoard = () => {
-  const [openSettings, setOpenSettings] = useState<boolean>(false);
+const DashBoard = async () => {
+  const user = await getUserFromCookies();
+
+  const userDataFromDatabase = await getUserInfoFromDatabase(user.userId);
+  console.log("userDataFromDatabase", userDataFromDatabase);
   return (
     <>
-      {openSettings && <Settings setOpenSettings={setOpenSettings}></Settings>}
       <div className="py-4 px-4 relative flex flex-col gap-10 overflow-hidden lg:gap-2 lg:flex-row lg:w-[95%] lg:max-h-[90vh] bg-neutral-900/80  text-white lg:rounded-md lg:shadow-lg">
-        <UserSection setOpenSettings={setOpenSettings} user={user} />
-        <FirstDashboardPart user={user} />
-        <SecondDashboardPart user={user} />
+        <UserSection user={userDataFromDatabase} />
+        {/* <FirstDashboardPart user={user} />
+        <SecondDashboardPart user={user} /> */}
       </div>
     </>
   );

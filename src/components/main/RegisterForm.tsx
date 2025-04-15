@@ -17,19 +17,10 @@ const RegisterForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
-  const appwrite = useAppwriteClient();
   return (
     <form
       onSubmit={(e) =>
-        handleSubmitRegister(
-          e,
-          setLoading,
-          setError,
-          name,
-          email,
-          password,
-          appwrite
-        )
+        handleSubmitRegister(e, setLoading, setError, name, email, password)
       }
       className="flex flex-col gap-2"
     >

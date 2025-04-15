@@ -1,12 +1,19 @@
+import getUserFromCookies from "@/utils/getUserFromCookies";
 import { Account, Client, Databases, ID } from "node-appwrite";
+const client = new Client()
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "")
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || "")
+  .setKey(process.env.NEXT_PUBLIC_APPWRITE_KEY || "");
+
+export const account = new Account(client);
+export const databases = new Databases(client);
 
 export const handleSubmitLogin = async (
   event: React.FormEvent,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   setError: React.Dispatch<React.SetStateAction<string | null>>,
   email: string,
-  password: string,
-  account: Account
+  password: string
 ) => {
   event.preventDefault();
   try {
@@ -47,26 +54,13 @@ export const handleSubmitRegister = async (
   setError: React.Dispatch<React.SetStateAction<string | unknown | null>>,
   name: string,
   email: string,
-  password: string,
-  appwrite: {
-    account: Account;
-    client: Client;
-  }
+  password: string
 ) => {
   event.preventDefault();
-  const databases = new Databases(appwrite.client);
+  const databases = new Databases(client);
 
   const DATABASE_ID = "67f950b50039e0b72f94";
-  const COLLECTION_ID = "67f950c400265a40669d";
-
-  const initialUserData = {
-    name,
-    sessionCount: 0,
-    timeElapsed: 0,
-    workouts: [],
-    pfp: null,
-    membership: null,
-  };
+  const COLLECTION_ID = "67fe5ef9003db7db33fb";
 
   try {
     setLoading(true);
@@ -78,18 +72,21 @@ export const handleSubmitRegister = async (
       setError("Password must be at least 8 characters long");
       return;
     }
-
-    const user = await appwrite.account.create(
-      "unique()",
+    const initialId = ID.unique();
+    const initialUserData = {
+      name,
       email,
-      password,
-      name
-    );
+      workouts: [],
+      pfp: null,
+      membershipType: null,
+    };
+
+    const user = await account.create(initialId, email, password, name);
     console.log("User created:", user);
     await databases.createDocument(
       DATABASE_ID,
       COLLECTION_ID,
-      ID.unique(),
+      initialId,
       initialUserData
     );
     console.log("User data created:");
@@ -118,4 +115,13 @@ export const handleSubmitLogout = async () => {
   } catch (err) {
     console.error("Error during logout:", err);
   }
+};
+
+export const getUserInfoFromDatabase = async (id: string) => {
+  const userInfoFromDatabase = await databases.getDocument(
+    "67f950b50039e0b72f94",
+    "67fe5ef9003db7db33fb",
+    id
+  );
+  return userInfoFromDatabase;
 };

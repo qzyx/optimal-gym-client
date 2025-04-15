@@ -2,6 +2,7 @@ import { formatTime } from "@/helpers/time";
 import Image from "next/image";
 import React from "react";
 import { User } from "./Main/Dashboard";
+import { Workout } from "@/types/Workout";
 
 const UserStats = ({ user }: { user: User }) => {
   return (
@@ -19,11 +20,18 @@ const UserStats = ({ user }: { user: User }) => {
       <div className="w-full gap-1 flex flex-col">
         <div className="flex justify-between w-full">
           <span>Completed Sessions</span>
-          <span>{user.sessionCount}</span>
+          <span>{user.workouts.length}</span>
         </div>
         <div className="flex justify-between w-full">
           <span>Time Elapsed</span>
-          <span>{formatTime(user.timeElapsed)}</span>
+          <span>
+            {formatTime(
+              user.workouts.reduce(
+                (total: number, workout: Workout) => total + workout.duration,
+                0
+              )
+            )}
+          </span>
         </div>
       </div>
     </div>

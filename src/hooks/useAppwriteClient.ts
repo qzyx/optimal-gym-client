@@ -1,4 +1,4 @@
-import { Account, Client } from "node-appwrite";
+import { Account, Client, Databases } from "node-appwrite";
 import { useMemo } from "react";
 const useAppwriteClient = () => {
   const client = useMemo(() => {
@@ -9,8 +9,8 @@ const useAppwriteClient = () => {
   }, []);
 
   const account = useMemo(() => new Account(client), [client]);
-
-  return { client, account };
+  const databases = new Databases(client);
+  return { client, account, databases };
 };
 
 export default useAppwriteClient;

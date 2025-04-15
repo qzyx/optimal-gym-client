@@ -13,11 +13,10 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [visiblePassword, setVisiblePassword] = useState(false);
 
-  const { account } = useAppwriteClient();
   return (
     <form
       onSubmit={(event) =>
-        handleSubmitLogin(event, setLoading, setError, email, password, account)
+        handleSubmitLogin(event, setLoading, setError, email, password)
       }
       className="flex flex-col gap-2"
     >
