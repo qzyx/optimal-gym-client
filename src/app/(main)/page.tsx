@@ -6,7 +6,7 @@ import getUserFromCookies from "@/utils/getUserFromCookies";
 
 const page = async () => {
   const user = await getUserFromCookies();
-  console.log(user);
+
   return (
     <div className="flex flex-col gap-10">
       <HeroSection user={user} />
