@@ -11,7 +11,7 @@ const Header = async () => {
           href={"/dashboard"}
           className="cursor-pointer hover:text-gray-300 transition-all duration-200 ease-in-out"
         >
-          To Dashboard
+          Dashboard
         </Link>
       ) : (
         <Link

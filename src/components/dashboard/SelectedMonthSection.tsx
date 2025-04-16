@@ -1,10 +1,13 @@
 "use client";
 
-
-import { formatTime } from "@/helpers/time";
+import { formatTime, getMonthFromFormatedDate } from "@/helpers/time";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 import { Workout } from "@/types/Workout";
 import { AnimatePresence, motion } from "framer-motion";
+import AverageDuration from "./AverageDuration";
+import TotalTimeSpent from "./TotalTimeSpent";
+import OpenedMonthWorkoutCount from "./OpenedMonthWorkoutCount";
+import { monthNames } from "../../../public/monthNames";
 const SelectedMonthSection = ({
   openedMonth,
   user,
@@ -12,6 +15,11 @@ const SelectedMonthSection = ({
   openedMonth: string | null;
   user: UserDataFromDatabase;
 }) => {
+  const workouts = user.workouts.map((workout: string) => JSON.parse(workout));
+  const openedWorkouts = workouts.filter(
+    (workout: Workout) => getMonthFromFormatedDate(workout.date) === openedMonth
+  );
+
   return (
     <div className="flex-1 w-full flex  items-center justify-center">
       <AnimatePresence mode="wait">
@@ -22,94 +30,25 @@ const SelectedMonthSection = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="w-full gap-2 h-full flex flex-col items-center p-2   rounded-md"
+            className="w-full gap-20 lg:gap-2 h-full flex flex-col items-center p-2   rounded-md"
           >
-            <span className="tracking-widest text-xl">{openedMonth}</span>
+            <span className="tracking-widest text-xl flex-col items-center flex">
+              <span>{monthNames[openedMonth.toUpperCase()]}</span>
+              <span className="text-sm t">Workouts</span>
+            </span>
             <div className="grow flex w-full lg:gap-4 flex-col lg:flex-row">
-              <div className="flex-1 flex flex-col items-center justify-evenly  ">
-                <motion.div
-                  initial={{ scale: 1, opacity: 0, x: -20 }}
-                  animate={{ scale: 1, opacity: 1, x: 0 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                    scale: { duration: 0.1 },
-                    opacity: { delay: 0.1 },
-                    x: { delay: 0.1 },
-                  }}
-                  className="flex  flex-col items-center gap-2"
-                >
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-                    Average Duration:
-                  </span>
-                  <span className="text-xl ">
-                    {user.workouts[openedMonth.toLowerCase()]?.length > 0
-                      ? formatTime(
-                          user.workouts[openedMonth.toLowerCase()].reduce(
-                            (acc: number, workout: Workout) =>
-                              acc + (workout.duration || 0),
-                            0
-                          ) / user.workouts[openedMonth.toLowerCase()].length
-                        )
-                      : "0 min"}
-                  </span>
-                </motion.div>
-                <motion.div
-                  initial={{ scale: 1, opacity: 0, x: -20 }}
-                  animate={{ scale: 1, opacity: 1, x: 0 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{
-                    scale: { duration: 0.1 },
-                    duration: 0.4,
-                    ease: "easeInOut",
-                    opacity: { delay: 0.2 },
-                    x: { delay: 0.2 },
-                  }}
-                  className="flex flex-col items-center gap-2"
-                >
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-                    Total Time spent:
-                  </span>
-                  <span className="text-xl   ">
-                    {user.workouts[openedMonth.toLowerCase()]?.length > 0
-                      ? formatTime(
-                          user.workouts[openedMonth.toLowerCase()].reduce(
-                            (acc: number, workout: Workout) =>
-                              acc + (workout.duration || 0),
-                            0
-                          )
-                        )
-                      : "0 min"}
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  initial={{ scale: 1, opacity: 0, x: -20 }}
-                  animate={{ scale: 1, opacity: 1, x: 0 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{
-                    scale: { duration: 0.1 },
-                    duration: 0.4,
-                    ease: "easeInOut",
-                    opacity: { delay: 0.3 },
-                    x: { delay: 0.3 },
-                  }}
-                  className="flex flex-col items-center gap-2"
-                >
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-                    Workout Count:
-                  </span>
-                  <span className="text-xl">
-                    {user.workouts[openedMonth.toLowerCase()]?.length}
-                  </span>
-                </motion.div>
+              <div className="flex-1 flex flex-col items-center justify-evenly gap-5 lg:gap-0 pb-10 lg:pb-0 ">
+                <AverageDuration openedWorkouts={openedWorkouts} />
+                <TotalTimeSpent openedWorkouts={openedWorkouts} />
+                <OpenedMonthWorkoutCount openedWorkouts={openedWorkouts} />
               </div>
               <div className="flex flex-1 w-full "></div>
             </div>
           </motion.div>
         ) : (
-          <span>Click on the bar</span>
+          <span className="py-40 lg:py-0">
+            Open more month info by clicking on it in the chart
+          </span>
         )}
       </AnimatePresence>
     </div>

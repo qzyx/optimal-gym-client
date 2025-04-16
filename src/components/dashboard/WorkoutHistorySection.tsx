@@ -9,7 +9,6 @@ const WorkoutHistorySection = ({ user }: { user: UserDataFromDatabase }) => {
     handleAddStaticWorkout(3000, new Date(), user.$id);
   };
   const workouts = user.workouts?.map((workout: string) => JSON.parse(workout));
-  console.log("user workouts", workouts);
 
   return (
     <div className="flex-1 w-full gap-4 flex overflow-hidden  flex-col">

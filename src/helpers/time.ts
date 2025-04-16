@@ -41,7 +41,6 @@ export const formatDate = (date: Date): string => {
 export const getMonthFromFormatedDate = (date: string): string => {
   const parts = date.split(".");
   const month = parts[1];
-  console.log("month", month);
 
   switch (month) {
     case "01":

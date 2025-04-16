@@ -14,7 +14,7 @@ const WorkoutsCountsChartSection = ({
 
   return (
     <div className="flex-1 w-full">
-      <WorkoutsCountsChart user={user} onClick={handleClick} />
+      <WorkoutsCountsChart user={user} handleClick={handleClick} />
     </div>
   );
 };

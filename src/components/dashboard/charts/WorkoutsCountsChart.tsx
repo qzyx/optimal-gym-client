@@ -1,5 +1,6 @@
 "use client";
 
+import { getMonthFromFormatedDate } from "@/helpers/time";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 import { Workout } from "@/types/Workout";
 import {
@@ -12,8 +13,6 @@ import {
   Tooltip,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { monthNames } from "../../../../public/monthNames";
-import { getMonthFromFormatedDate } from "@/helpers/time";
 
 ChartJS.register(
   BarElement,
@@ -26,10 +25,10 @@ ChartJS.register(
 
 export default function WorkoutsCountsChart({
   user,
-  onClick,
+  handleClick,
 }: {
   user: UserDataFromDatabase;
-  onClick: (month: string) => void;
+  handleClick: (month: string) => void;
 }) {
   const labels = [
     "Jan",
@@ -46,12 +45,12 @@ export default function WorkoutsCountsChart({
     "Dec",
   ];
   const workouts = user.workouts?.map((workout: string) => JSON.parse(workout));
+
   console.log(getMonthFromFormatedDate(workouts[1]?.date));
   const dataValues = labels.map(
     (month) =>
       workouts?.filter(
-        (workout: Workout) =>
-          getMonthFromFormatedDate(workout.date) === month
+        (workout: Workout) => getMonthFromFormatedDate(workout.date) === month
       ).length
   );
   const data = {
@@ -79,10 +78,7 @@ export default function WorkoutsCountsChart({
 
       if (elements.length > 0) {
         const { index } = elements[0];
-        const month = labels[index];
-        const count = dataValues[index];
-        console.log(month, count);
-        onClick(monthNames[month]);
+        handleClick(labels[index]);
       }
     },
     responsive: true,
