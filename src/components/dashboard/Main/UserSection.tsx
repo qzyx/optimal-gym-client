@@ -1,12 +1,12 @@
 "use client";
 
 import Settings from "@/components/main/Settings";
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 import { Settings as SettingsIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import UserMembership from "../UserMembership";
 import UserStats from "../UserStats";
-import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 
 const UserSection = ({ user }: { user: UserDataFromDatabase }) => {
   const [openSettings, setOpenSettings] = useState<boolean>(false);

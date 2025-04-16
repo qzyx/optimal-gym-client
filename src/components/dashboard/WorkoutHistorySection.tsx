@@ -1,6 +1,5 @@
 "use client";
 
-import { formatDate } from "@/helpers/time";
 import { handleAddStaticWorkout } from "@/lib/appwrite";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 import { Workout } from "@/types/Workout";
@@ -15,7 +14,7 @@ const WorkoutHistorySection = ({ user }: { user: UserDataFromDatabase }) => {
   return (
     <div className="flex-1 w-full gap-4 flex overflow-hidden  flex-col">
       <span className="text-xl self-center">Workout History</span>
-      <div className="flex flex-col items-center  overflow-y-scroll gap-2 no-scrollbar grow h-auto max-h-100  min-h-100 lg:max-h-none">
+      <div className="flex flex-col items-center  overflow-y-scroll gap-2 no-scrollbar grow h-auto max-h-100   lg:max-h-none">
         {workouts && workouts.length > 0 ? (
           workouts.slice(-10).map((workout: Workout, idx: number) => (
             <div

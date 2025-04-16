@@ -1,6 +1,5 @@
-import React from "react";
-import TimeElapsedChart from "./charts/TimeElapsedChart";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+import TimeElapsedChart from "./charts/TimeElapsedChart";
 
 const TimeElapsedChartSection = ({ user }: { user: UserDataFromDatabase }) => {
   return (

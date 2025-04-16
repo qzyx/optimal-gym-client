@@ -1,11 +1,11 @@
 import { formatTime } from "@/helpers/time";
 import Image from "next/image";
-import React from "react";
 
-import { Workout } from "@/types/Workout";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+import { Workout } from "@/types/Workout";
 
 const UserStats = ({ user }: { user: UserDataFromDatabase }) => {
+  const workouts = user.workouts?.map((workout: string) => JSON.parse(workout));
   return (
     <div className="flex flex-col w-full gap-5">
       <div id="userInfo" className="flex flex-col gap-1 items-center ">
@@ -21,13 +21,13 @@ const UserStats = ({ user }: { user: UserDataFromDatabase }) => {
       <div className="w-full gap-1 flex flex-col">
         <div className="flex justify-between w-full">
           <span>Completed Sessions</span>
-          <span>{user.workouts.length}</span>
+          <span>{workouts.length}</span>
         </div>
         <div className="flex justify-between w-full">
           <span>Time Elapsed</span>
           <span>
             {formatTime(
-              user.workouts.reduce(
+              workouts.reduce(
                 (total: number, workout: Workout) => total + workout.duration,
                 0
               )

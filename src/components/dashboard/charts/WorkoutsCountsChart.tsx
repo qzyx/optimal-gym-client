@@ -1,5 +1,7 @@
 "use client";
 
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+import { Workout } from "@/types/Workout";
 import {
   BarElement,
   CategoryScale,
@@ -11,8 +13,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { monthNames } from "../../../../public/monthNames";
-import { Workout } from "@/types/Workout";
-import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+import { getMonthFromFormatedDate } from "@/helpers/time";
 
 ChartJS.register(
   BarElement,
@@ -44,11 +45,13 @@ export default function WorkoutsCountsChart({
     "Nov",
     "Dec",
   ];
+  const workouts = user.workouts?.map((workout: string) => JSON.parse(workout));
+  console.log(getMonthFromFormatedDate(workouts[1]?.date));
   const dataValues = labels.map(
     (month) =>
-      user.workouts?.filter(
+      workouts?.filter(
         (workout: Workout) =>
-          new Date(workout.date).getMonth() === labels.indexOf(month)
+          getMonthFromFormatedDate(workout.date) === month
       ).length
   );
   const data = {

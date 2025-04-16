@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
 
 import { formatTime } from "@/helpers/time";
-import { AnimatePresence, motion } from "framer-motion";
-import { Workout } from "@/types/Workout";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+import { Workout } from "@/types/Workout";
+import { AnimatePresence, motion } from "framer-motion";
 const SelectedMonthSection = ({
   openedMonth,
   user,

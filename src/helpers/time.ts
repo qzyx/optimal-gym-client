@@ -31,9 +31,44 @@ export const getDaysBetweenDates = (endDate: string): number => {
   return daysDifference;
 };
 export const formatDate = (date: Date): string => {
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear().toString().slice(-2);
-  
+
   return `${day}.${month}.${year}`;
+};
+
+export const getMonthFromFormatedDate = (date: string): string => {
+  const parts = date.split(".");
+  const month = parts[1];
+  console.log("month", month);
+
+  switch (month) {
+    case "01":
+      return "Jan";
+    case "02":
+      return "Feb";
+    case "03":
+      return "Mar";
+    case "04":
+      return "Apr";
+    case "05":
+      return "May";
+    case "06":
+      return "Jun";
+    case "07":
+      return "Jul";
+    case "08":
+      return "Aug";
+    case "09":
+      return "Sep";
+    case "10":
+      return "Oct";
+    case "11":
+      return "Nov";
+    case "12":
+      return "Dec";
+    default:
+      return "Invalid month";
+  }
 };

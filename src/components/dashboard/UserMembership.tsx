@@ -1,38 +1,32 @@
-import { formatTime, getDaysBetweenDates } from "@/helpers/time";
+import { getDaysBetweenDates } from "@/helpers/time";
 import { Crown, Star } from "lucide-react";
 import { pricingPlans } from "../../../public/pricingPlans";
 
-import UserRechargeButton from "./UsertRechargeButton";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+import UserRechargeButton from "./UsertRechargeButton";
 
 const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
+  const crownColors: {
+    [key: string]: string;
+  } = {
+    month: "silver",
+    year: "gold",
+    single: "silver",
+  };
   return (
     <div id="memberShip" className="flex lg:grow flex-col w-full gap-5">
       <div className="flex flex-col w-full gap-1">
         <span className="text-xl">Membership</span>
         <span className="text-xl  self-center flex flex-col items-center text-center">
-          {user.membershipType === "month" ? (
-            <span>
-              <Crown color="silver"></Crown>
-            </span>
-          ) : (
-            ""
-          )}
-          {user.membershipType === "year" ? (
-            <span>
-              <Crown color="gold"></Crown>
-            </span>
-          ) : (
-            ""
-          )}
+          <Crown color={crownColors[user.membershipType]}></Crown>
           <span
             className={`${
               user.membershipType === "year" && "text-yellow-300 "
             } ${user.membershipType === "month" && "text-gray-300 "} ${
-              user.membershipType === "single" && "text-yellow-300 "
+              user.membershipType === "single" && "text-gray-300 "
             } `}
           >
-            {user.membershipType}
+            {user.membershipType || "No Membership"}
           </span>
         </span>
       </div>
@@ -63,7 +57,9 @@ const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
                 key={idx}
               >
                 <span>
-                  <Star color="gold"></Star>
+                  <Star
+                    color={user.membershipType === "gold" ? "gold" : "silver"}
+                  ></Star>
                 </span>
                 <span>{benefit}</span>
               </div>
