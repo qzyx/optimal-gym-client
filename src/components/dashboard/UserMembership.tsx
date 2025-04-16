@@ -3,16 +3,10 @@ import { Crown, Star } from "lucide-react";
 import { pricingPlans } from "../../../public/pricingPlans";
 
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
-import UserRechargeButton from "./UsertRechargeButton";
+import { crownColors } from "../../../public/crowsColors";
+import UserRechargeSection from "./UserRechargeSection";
 
 const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
-  const crownColors: {
-    [key: string]: string;
-  } = {
-    month: "silver",
-    year: "gold",
-    single: "silver",
-  };
   return (
     <div id="memberShip" className="flex lg:grow flex-col w-full gap-5">
       <div className="flex flex-col w-full gap-1">
@@ -74,7 +68,7 @@ const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
         <span className="text-sm  ">
           Last Payment: {user.lastPayment || "No Payment for now"}
         </span>
-        <UserRechargeButton />
+        <UserRechargeSection />
       </div>
     </div>
   );
