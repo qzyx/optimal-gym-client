@@ -3,12 +3,13 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import RechargeForm from "./RechargeForm";
-const UserRechargeSection = () => {
+import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
+const UserRechargeSection = ({ user }: { user: UserDataFromDatabase }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative ">
       <AnimatePresence>
-        {open && <RechargeForm setOpen={setOpen} />}
+        {open && <RechargeForm user={user} setOpen={setOpen} />}
       </AnimatePresence>
       <button
         onClick={() => setOpen((prev) => !prev)}

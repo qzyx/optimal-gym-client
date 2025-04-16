@@ -153,7 +153,25 @@ export const handleAddStaticWorkout = async (
     id,
     {
       workouts: [workoutString, ...currentWorkouts],
+      lastPayment: date,
     }
   );
   console.log("added", res);
+};
+export const buyMembership = async (
+  type: string,
+  date: Date,
+  userId: string
+) => {
+  const res = await databases.updateDocument(
+    "67f950b50039e0b72f94",
+    "67fe5ef9003db7db33fb",
+    userId,
+    {
+      lastPayment: date,
+      membershipType: type,
+      MembershipStartedDate: date,
+      MembershipEndedDate: new Date(date.getTime() + 30 * 24 * 60 * 60 * 1000),
+    }
+  );
 };

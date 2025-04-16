@@ -1,4 +1,8 @@
-import { getDaysBetweenDates } from "@/helpers/time";
+import {
+  formatDate,
+  formatDateWithTime,
+  getDaysBetweenDates,
+} from "@/helpers/time";
 import { Crown, Star } from "lucide-react";
 import { pricingPlans } from "../../../public/pricingPlans";
 
@@ -28,11 +32,15 @@ const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
         <div className="gap-1 flex flex-col border-b border-gray-400">
           <div className="flex justify-between w-full">
             <span>Started</span>
-            <span>{user.MembershipStartedDate || "Not Started Yet"}</span>
+            <span>
+              {formatDate(user.MembershipStartedDate) || "Not Started Yet"}
+            </span>
           </div>
           <div className="flex justify-between w-full">
             <span>Ending</span>
-            <span>{user.MembershipEndedDate || "Not Started Yet"}</span>
+            <span>
+              {formatDate(user.MembershipEndedDate) || "Not Started Yet"}
+            </span>
           </div>
         </div>
         <div className="flex justify-between w-full text-lg">
@@ -66,9 +74,10 @@ const UserMembership = ({ user }: { user: UserDataFromDatabase }) => {
       </div>
       <div className="flex self-center flex-col w-full ">
         <span className="text-sm  ">
-          Last Payment: {user.lastPayment || "No Payment for now"}
+          Last Payment:{" "}
+          {formatDateWithTime(user.lastPayment) || "No Payment for now"}
         </span>
-        <UserRechargeSection />
+        <UserRechargeSection user={user} />
       </div>
     </div>
   );

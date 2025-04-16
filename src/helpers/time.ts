@@ -15,7 +15,7 @@ export const formatTime = (timeInSeconds: number): string => {
     }
   }
 };
-export const getDaysBetweenDates = (endDate: string): number => {
+export const getDaysBetweenDates = (endDate: Date): number => {
   if (!endDate) {
     return 0; // Return 0 if endDate is not provided
   }
@@ -30,15 +30,36 @@ export const getDaysBetweenDates = (endDate: string): number => {
 
   return daysDifference;
 };
-export const formatDate = (date: Date): string => {
-  const day = date.getDate().toString().padStart(2, "0");
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const year = date.getFullYear().toString().slice(-2);
+export const formatDate = (date: Date | string): string | null => {
+  if (!date) {
+    return null; // Return empty string if date is not provided
+  }
+  const parsedDate = typeof date === "string" ? new Date(date) : date;
+  const day = parsedDate.getDate().toString().padStart(2, "0");
+  const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
+  const year = parsedDate.getFullYear().toString().slice(-2);
 
   return `${day}.${month}.${year}`;
 };
 
-export const getMonthFromFormatedDate = (date: string): string => {
+export const formatDateWithTime = (date: Date | string): string | null => {
+  if (!date) {
+    return null; // Return empty string if date is not provided
+  }
+  const parsedDate = typeof date === "string" ? new Date(date) : date;
+  const day = parsedDate.getDate().toString().padStart(2, "0");
+  const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
+  const year = parsedDate.getFullYear().toString().slice(-2);
+  const hours = parsedDate.getHours().toString().padStart(2, "0");
+  const minutes = parsedDate.getMinutes().toString().padStart(2, "0");
+  return `${day}.${month}.${year} ${hours}:${minutes}`;
+};
+
+export const getMonthFromFormatedDate = (date: string): string | null => {
+  if (!date) {
+    return null;
+  }
+
   const parts = date.split(".");
   const month = parts[1];
 
