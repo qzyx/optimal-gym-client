@@ -1,3 +1,4 @@
+import { formatDate } from "@/helpers/time";
 import getUserFromCookies from "@/utils/getUserFromCookies";
 import { Account, Client, Databases, ID } from "node-appwrite";
 const client = new Client()
@@ -132,7 +133,7 @@ export const handleAddStaticWorkout = async (
   id: string
 ) => {
   const workout = {
-    date: date.toISOString(),
+    date: formatDate(date),
     duration: duration,
   };
   const workoutString = JSON.stringify(workout);
