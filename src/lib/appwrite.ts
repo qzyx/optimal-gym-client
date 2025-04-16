@@ -125,3 +125,34 @@ export const getUserInfoFromDatabase = async (id: string) => {
   );
   return userInfoFromDatabase;
 };
+
+export const handleAddStaticWorkout = async (
+  duration: number,
+  date: Date,
+  id: string
+) => {
+  const workout = {
+    date: date.toISOString(),
+    duration: duration,
+  };
+  const workoutString = JSON.stringify(workout);
+
+  // Get the current user document to access existing workouts
+  const currentUser = await databases.getDocument(
+    "67f950b50039e0b72f94",
+    "67fe5ef9003db7db33fb",
+    id
+  );
+
+  const currentWorkouts = currentUser.workouts || [];
+
+  const res = await databases.updateDocument(
+    "67f950b50039e0b72f94",
+    "67fe5ef9003db7db33fb",
+    id,
+    {
+      workouts: [workoutString, ...currentWorkouts],
+    }
+  );
+  console.log("added", res);
+};

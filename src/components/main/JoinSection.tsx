@@ -4,6 +4,7 @@ import Button from "../UI/Button";
 import { UserSession } from "@/types/UserSession";
 
 const JoinSection = ({ user }: { user: UserSession }) => {
+  console.log("user in dashboard",user)
   return (
     <FadeIn delayTime={0.2} x={-10}>
       <div className="px-10 py-5 text-white rounded-md items-center flex flex-col gap-4 bg-black/60">
