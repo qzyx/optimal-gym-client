@@ -42,7 +42,7 @@ const RechargeForm = ({
               </span>
               <button
                 onClick={async () => {
-                  await buyMembership(plan.id, new Date(), user.$id);
+                  await buyMembership(plan.id, new Date(), user.$id, plan.days);
                 }}
                 className="flex-1 cursor-pointer bg-gradient-to-br w-full from-green-950 via-green-500 to-green-200 transition-all duration-200 text-white bg-[length:200%_200%] bg-[position:5%_50%] hover:tracking-widest py-2 rounded-md shadow-xl hover:bg-[position:100%_50%] ease-in-out"
               >

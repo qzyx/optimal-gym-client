@@ -1,4 +1,5 @@
 export interface PricingPlanProps {
+  days: number;
   id: string;
   name: string;
   price: string;
@@ -9,6 +10,7 @@ export interface PricingPlanProps {
 
 export const pricingPlans: PricingPlanProps[] = [
   {
+    days: 7,
     id: "single",
     name: "Single Entry (Pay as you go)",
     price: "10$",
@@ -22,6 +24,7 @@ export const pricingPlans: PricingPlanProps[] = [
     ],
   },
   {
+    days: 30,
     id: "month",
     name: "Montly membership",
     price: "55$",
@@ -38,6 +41,7 @@ export const pricingPlans: PricingPlanProps[] = [
     isPopular: true,
   },
   {
+    days: 365,
     id: "year",
     name: "Yearly membership",
     price: "405$",

@@ -1,5 +1,4 @@
 import { formatDate } from "@/helpers/time";
-import getUserFromCookies from "@/utils/getUserFromCookies";
 import { Account, Client, Databases, ID } from "node-appwrite";
 const client = new Client()
   .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "")
@@ -161,7 +160,8 @@ export const handleAddStaticWorkout = async (
 export const buyMembership = async (
   type: string,
   date: Date,
-  userId: string
+  userId: string,
+  days: number
 ) => {
   const res = await databases.updateDocument(
     "67f950b50039e0b72f94",
@@ -171,7 +171,9 @@ export const buyMembership = async (
       lastPayment: date,
       membershipType: type,
       MembershipStartedDate: date,
-      MembershipEndedDate: new Date(date.getTime() + 30 * 24 * 60 * 60 * 1000),
+      MembershipEndedDate: new Date(
+        date.getTime() + days * 24 * 60 * 60 * 1000
+      ),
     }
   );
 };
