@@ -30,7 +30,7 @@ const SelectedMonthSection = ({
   );
 
   return (
-    <div className="flex-1 w-full flex bg-gradient-to-br from-transparent  via-purple-900/20 to-transparent rounded-md items-center justify-center">
+    <div className="flex-1 w-full flex  rounded-md items-center justify-center">
       <AnimatePresence mode="wait">
         {openedMonth ? (
           <motion.div
