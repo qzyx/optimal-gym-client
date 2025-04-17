@@ -160,9 +160,20 @@ export const handleAddStaticWorkout = async (
 export const buyMembership = async (
   type: string,
   date: Date,
-  userId: string,
-  days: number
+  userId: string
 ) => {
+  const end = new Date(date);
+  if (type === "month") {
+    end.setMonth(end.getMonth() + 1);
+  }
+  if (type === "year") {
+    end.setFullYear(end.getFullYear() + 1);
+  }
+  if (type === "single") {
+    end.setDate(end.getDate() + 7);
+  }
+  console.log("setting end date:", end);
+
   const res = await databases.updateDocument(
     "67f950b50039e0b72f94",
     "67fe5ef9003db7db33fb",
@@ -171,9 +182,7 @@ export const buyMembership = async (
       lastPayment: date,
       membershipType: type,
       MembershipStartedDate: date,
-      MembershipEndedDate: new Date(
-        date.getTime() + days * 24 * 60 * 60 * 1000
-      ),
+      MembershipEndedDate: end,
     }
   );
 };

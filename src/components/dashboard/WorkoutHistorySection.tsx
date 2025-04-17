@@ -11,7 +11,7 @@ const WorkoutHistorySection = ({ user }: { user: UserDataFromDatabase }) => {
   const workouts = user.workouts?.map((workout: string) => JSON.parse(workout));
 
   return (
-    <div className="flex-1 w-full gap-4 flex overflow-hidden  flex-col">
+    <div className="flex-1 w-full gap-4 flex overflow-hidden bg-gradient-to-bl from-transparent p-2 via-purple-900/20 to-transparent  rounded-md flex-col">
       <span className="text-xl self-center">Workout History</span>
       <div className="flex flex-col items-center  overflow-y-scroll gap-2 no-scrollbar grow h-auto max-h-100   lg:max-h-none">
         {workouts && workouts.length > 0 ? (

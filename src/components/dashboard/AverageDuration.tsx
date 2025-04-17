@@ -8,7 +8,6 @@ const AverageDuration = ({ openedWorkouts }: { openedWorkouts: Workout[] }) => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 20 }}
-      whileHover={{ scale: 1.05 }}
       transition={{
         duration: 0.4,
         ease: "easeInOut",
@@ -16,12 +15,12 @@ const AverageDuration = ({ openedWorkouts }: { openedWorkouts: Workout[] }) => {
         opacity: { delay: 0.1 },
         x: { delay: 0.1 },
       }}
-      className="flex  flex-col items-center gap-2"
+      className="flex  gap-2 flex-1 flex-col h-full items-center"
     >
-      <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-        Average Duration:
-      </span>
-      <span className="text-xl ">
+      <h2 className="text-lg sm:text-xl md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-purple-800 to-purple-500 animate-text">
+        Average Duration
+      </h2>
+      <div className="text-xl flex bg-gradient-to-br items-center justify-center h-full w-full from-black/40 shadow-xl hover:bg-[position:100%_50%] ease-in-out via-purple-800/20 to-black/40 transition-all duration-200  bg-[length:200%_200%] bg-[position:5%_50%] rounded-md p-5  ">
         {openedWorkouts.length > 0
           ? formatTime(
               openedWorkouts.reduce(
@@ -31,7 +30,7 @@ const AverageDuration = ({ openedWorkouts }: { openedWorkouts: Workout[] }) => {
               ) / openedWorkouts.length
             )
           : "0 min"}
-      </span>
+      </div>
     </motion.div>
   );
 };
