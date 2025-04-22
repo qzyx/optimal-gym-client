@@ -4,11 +4,11 @@ export default function middleware(req: NextRequest) {
   const session = req.cookies.get("sessionSecret");
   const pathname = req.nextUrl.pathname;
 
-  if (pathname === "/dashboard" && !session) {
+  if (pathname === "/dashboard" && !session?.value) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  if ((pathname === "/login" || pathname === "/register") && session) {
+  if ((pathname === "/login" || pathname === "/register") && session?.value) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 

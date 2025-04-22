@@ -1,10 +1,22 @@
 import { formatDate } from "@/helpers/time";
-import { Account, Client, Databases, ID } from "node-appwrite";
+import { Account, Client, Databases, ID, OAuthProvider } from "node-appwrite";
+import {
+  Account as clientAccount,
+  Databases as clientDatabases,
+  Client as clientClient,
+} from "appwrite";
 const client = new Client()
   .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "")
   .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || "")
   .setKey(process.env.NEXT_PUBLIC_APPWRITE_KEY || "");
 
+const appwirteClientclient = new clientClient()
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "")
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || "");
+export const appwriteClientAccount = new clientAccount(appwirteClientclient);
+export const appwriteClientDatabases = new clientDatabases(
+  appwirteClientclient
+);
 export const account = new Account(client);
 export const databases = new Databases(client);
 
@@ -40,6 +52,26 @@ export const handleSubmitLogin = async (
     }
     console.log("Login successful");
     window.location.href = "/dashboard";
+  } catch (err) {
+    setError("Error during login check email and password");
+    console.error("Error during login:", err);
+  } finally {
+    setLoading(false);
+  }
+};
+export const handleSubmitWithGoogle = async (
+  event: React.FormEvent,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setError: React.Dispatch<React.SetStateAction<string | null>>
+) => {
+  event.preventDefault();
+  try {
+    setLoading(true);
+    appwriteClientAccount.createOAuth2Session(
+      "google" as OAuthProvider,
+      "http://localhost:3000/dashboard",
+      "http://localhost:3000/login"
+    );
   } catch (err) {
     setError("Error during login check email and password");
     console.error("Error during login:", err);
