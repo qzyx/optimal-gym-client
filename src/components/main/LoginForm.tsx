@@ -1,11 +1,10 @@
 "use client";
-import useAppwriteClient from "@/hooks/useAppwriteClient";
 import { Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { handleSubmitLogin, handleSubmitWithGoogle } from "../../lib/appwrite";
 import Loading from "../UI/Loading";
-import Image from "next/image";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -96,7 +95,7 @@ const LoginForm = () => {
         </Link>
       </div>
       <button
-        onClick={(e) => handleSubmitWithGoogle(e, setLoading, setError)}
+        onClick={(e) => handleSubmitWithGoogle(e, setError)}
         className="w-10 h-10 p-4 relative self-center cursor-pointer hover:scale-105 transition-all duration-150"
       >
         <Image alt="google" fill src={"/google.png"}></Image>

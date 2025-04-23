@@ -1,15 +1,15 @@
 "use client";
 
-import { formatTime, getMonthFromFormatedDate } from "@/helpers/time";
+import { getMonthFromFormatedDate } from "@/helpers/time";
 import { UserDataFromDatabase } from "@/types/UserDataFromDatabase";
 import { Workout } from "@/types/Workout";
 import { AnimatePresence, motion } from "framer-motion";
-import AverageDuration from "./AverageDuration";
-import TotalTimeSpent from "./TotalTimeSpent";
-import OpenedMonthWorkoutCount from "./OpenedMonthWorkoutCount";
 import { monthNames } from "../../../public/monthNames";
-import ShortestSession from "./ShortestSession";
+import AverageDuration from "./AverageDuration";
 import LongestSession from "./LongestSession";
+import OpenedMonthWorkoutCount from "./OpenedMonthWorkoutCount";
+import ShortestSession from "./ShortestSession";
+import TotalTimeSpent from "./TotalTimeSpent";
 const SelectedMonthSection = ({
   openedMonth,
   user,
